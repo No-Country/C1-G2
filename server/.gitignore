@@ -105,3 +105,4 @@ dist
 
 #VS utils
 .history/
+package-lock.json

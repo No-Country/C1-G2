@@ -1,30 +1,21 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const morgan = require('morgan');
 const PREFIX = '/api/pet-adoption/';
 const app = express();
 const cors = require('cors');
+const { logger } = require('./src/utils/logger');
 const corsOptions = {
   origin: '*',
 };
-
+const { PORT } = require('./src/config/index');
 //middlewares
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
-app.use(cookieParser());
-app.use(
-  session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: false,
-  })
-);
 
 app.get(`${PREFIX}health`, (req, res) => {
-  res.status(200).send({ status: 'OK' });
+  res.status(200).json({ status: 'OK' });
 });
 
 app.listen(PORT, async () => {

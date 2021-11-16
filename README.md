@@ -2,6 +2,8 @@
 
 ## Overview
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/679c649e1ba546d7be89a14ff31aa3e4)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=No-Country/Cohorte-1-G2&utm_campaign=Badge_Grade)
+
 ### Requirements
 
 - Nodejs v12.13.x

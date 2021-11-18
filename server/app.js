@@ -8,8 +8,7 @@ const corsOptions = {
   origin: '*',
 };
 const { PORT } = require('./src/config/index');
-const petsAdoptionRouter = require('./src/routes/pets.adoption');
-
+const petsAdoptionRouter = require('./src/routes/pets.adoption.routes');
 
 //middlewares
 app.use(morgan('dev'));
@@ -19,7 +18,6 @@ app.use(cors(corsOptions));
 
 //routes
 app.use('/pets/', petsAdoptionRouter);
-
 
 app.get(`${PREFIX}health`, (req, res) => {
   res.status(200).json({ status: 'OK' });

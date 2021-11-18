@@ -4,7 +4,9 @@ const router = express.Router();
 
 
 
-router.get('/adoption');
+router.get('/adoption', (req, res) => {
+    res.send("mascota en adopcion");
+});
 
 
 

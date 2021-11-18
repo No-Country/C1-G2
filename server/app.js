@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 //routes
-app.use('/pets/', petsAdoptionRouter);
+app.use(`${PREFIX}`, petsAdoptionRouter);
 
 app.get(`${PREFIX}health`, (req, res) => {
   res.status(200).json({ status: 'OK' });

@@ -4,8 +4,8 @@ const router = express.Router();
 
 
 
-router.get('/adoption', (req, res) => {
-    res.send("mascota en adopcion");
+router.get('/users', (req, res) => {
+    res.send("listado de usuarios");
 });
 
 

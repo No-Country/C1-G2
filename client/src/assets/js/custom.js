@@ -332,7 +332,7 @@ const customInitCarousel = () => {
   $(".owl-courses-item").owlCarousel({
     items: 1,
     loop: true,
-    dots: true,
+    dots: false,
     nav: true,
     autoplay: true,
     margin: 30,

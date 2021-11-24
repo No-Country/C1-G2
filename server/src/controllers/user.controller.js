@@ -1,7 +1,7 @@
 const { logger } = require('../utils/logger');
 const bcrypt = require('bcrypt');
 //const boom = require('@hapi/boom');
-const UserService = require('../services/user.services');
+const UserService = require('../services/user');
 
 exports.create = async (req, res) => {
   try {

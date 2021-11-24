@@ -1,5 +1,5 @@
 const { logger } = require('../../utils/logger');
-const users = require('../schemas/user');
+const users = require('../schemas/user.model');
 
 module.exports = class UserDAO {
   create(user) {

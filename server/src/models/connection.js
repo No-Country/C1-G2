@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { MONGO_URI } = require('../config/globals');
+const { MONGO_URI } = require('../config/index');
 const { logger } = require('../utils/logger');
 exports.getConnection = async () => {
   // mongoose.set('useCreateIndex', true)

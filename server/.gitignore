@@ -106,3 +106,4 @@ dist
 #VS utils
 .history/
 package-lock.json
+mongo-volume/

@@ -26,7 +26,7 @@ const APP_ROUTES: Routes = [
     NgbModule
   ],
   declarations: [
-    PetsAdoptionComponent
+
   ]
 })
 export class ComponentsModule { }

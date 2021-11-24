@@ -7,10 +7,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CardsComponent } from './components/card/card.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PetsAdoptionComponent } from './components/pets-adoption/pets-adoption.component';
 
 const APP_ROUTES: Routes = [
   { path: 'card', component: CardsComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'pets-adoption', component: PetsAdoptionComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: 'dashboard' },
 ];
@@ -23,6 +25,8 @@ const APP_ROUTES: Routes = [
     ReactiveFormsModule,
     NgbModule
   ],
-  declarations: []
+  declarations: [
+    PetsAdoptionComponent
+  ]
 })
 export class ComponentsModule { }

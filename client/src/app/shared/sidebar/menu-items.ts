@@ -24,5 +24,21 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     extralink: false,
     submenu: [],
+  },
+  {
+    path: "",
+    title: "Adopciones",
+    icon: "mdi mdi-dots-horizontal",
+    class: "nav-small-cap",
+    extralink: true,
+    submenu: [],
+  },
+  {
+    path: "/admin/pets-adoption",
+    title: "Lista",
+    icon: "mdi mdi-gauge",
+    class: "",
+    extralink: false,
+    submenu: [],
   }
 ];

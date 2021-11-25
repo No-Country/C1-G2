@@ -1,7 +1,21 @@
 require('dotenv').config();
 
-module.exports = {
-  PORT: process.env.PORT || 8080,
-  NODE_ENV: process.env.NODE_ENV || 'development',
-  MONGO_URI: process.env.MONGO_URI || '',
-};
+const { NODE_ENV } = process.env;
+
+let currentEnv;
+
+if (NODE_ENV == 'production') {
+  currentEnv = {
+    NODE_ENV: process.env.NODE_ENV,
+    PORT: process.env.PORT,
+    MONGO_URI: process.env.MONGO_URI,
+  };
+} else if (NODE_ENV == 'development') {
+  currentEnv = {
+    NODE_ENV: process.env.NODE_ENV,
+    PORT: process.env.PORT,
+    MONGO_URI: process.env.LOCAL_MONGO_URI,
+  };
+}
+
+module.exports = currentEnv;

@@ -36,7 +36,3 @@
 ### Documentation
 
 [Postman📖](https://documenter.getpostman.com/view/8141743/UVJYJyxf)
-
-### Contributors
-
--

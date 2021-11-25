@@ -8,7 +8,7 @@ const corsOptions = {
   origin: '*',
 };
 const { PORT } = require('./src/config/index');
-const petsAdoptionRouter = require('./src/routes/pets.adoption.routes');
+const petsRouter = require('./src/routes/pets.routes');
 const usersRouter = require('./src/routes/users.routes');
 const { getConnection } = require('./src/models/connection');
 
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 //routes
-app.use(PREFIX, petsAdoptionRouter);
+app.use(PREFIX, petsRouter);
 app.use(PREFIX, usersRouter);
 
 app.get(`${PREFIX}health`, (req, res) => {

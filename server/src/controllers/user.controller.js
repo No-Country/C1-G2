@@ -1,11 +1,11 @@
 const { logger } = require('../utils/logger');
 const bcrypt = require('bcrypt');
-//const boom = require('@hapi/boom');
+const boom = require('@hapi/boom');
 const UserService = require('../services/user');
+const User = new UserService();
 
 exports.create = async (req, res) => {
   try {
-    const User = new UserService();
     const { username, email, password, image, phone } = await req.body;
     const hashedPassword = bcrypt.hashSync(
       password,
@@ -20,22 +20,80 @@ exports.create = async (req, res) => {
       phone: phone,
       role: 'read',
     };
-    await User.register(newUser);
-    return res.status(201).json({ message: 'User created' });
+    const result = await User.register(newUser);
+    if (result.level === 'error') {
+      res.status(500).json({ message: 'User not created' });
+    } else {
+      res.status(200).json({ message: 'User created' });
+    }
   } catch (error) {
     logger.error(error);
-    return res.status(406).send(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 };
 
 exports.read = async (req, res) => {
   try {
-    const User = new UserService();
     const users = await User.getAll();
-    return res.status(200).json({ users });
+    res.status(200).json({ users });
   } catch (error) {
     logger.error(error);
-    return res.status(500).send(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
+  }
+};
+
+exports.readById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.getById(id);
+    if (user === null) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      res.status(200).json({ user });
+    }
+  } catch (error) {
+    logger.error(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
+  }
+};
+
+exports.update = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const { username, image, phone } = req.body;
+
+    const result = await User.updateUser({
+      id: id,
+      username: username,
+      image: image,
+      phone: phone,
+    });
+    res.status(200).json({ data: result, message: 'User updated' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.delete = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.destroy(id);
+    if (user === undefined || user === null) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      res.status(200).json({ message: 'User deleted' });
+    }
+  } catch (error) {
+    logger.error(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 };
 /*
@@ -64,46 +122,9 @@ exports.login = async (req, res, next) => {
 };
 
 
-
 exports.logout = (req, res) => {
   req.session.destroy();
   res.status(200).json({ message: 'User logged out' });
 };
 
-// Update a User by the id in the request
-exports.update = async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    const { email, password } = req.body;
-    const result = await User.update(
-      {
-        email: email,
-        password: password,
-      },
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
-    res.status(200).json({ data: result, message: 'User updated' });
-  } catch (error) {
-    next(error);
-  }
-};
-
-//// Delete a User with the specified id in the request
-exports.delete = async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    const result = await User.destroy({
-      where: {
-        id: id,
-      },
-    });
-    res.status(202).json({ data: result, message: 'User deleted' });
-  } catch (error) {
-    next(error);
-  }
-};
 */

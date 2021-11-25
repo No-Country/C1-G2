@@ -2,40 +2,42 @@ const { logger } = require('../../utils/logger');
 const users = require('../schemas/user.model');
 
 module.exports = class UserDAO {
-  create(user) {
+  async create(user) {
     try {
       const saveModelUser = new users(user);
-      return saveModelUser.save();
+      return await saveModelUser.save();
     } catch (error) {
       logger.error(error);
+      return error;
     }
   }
 
-  read() {
+  async read() {
     try {
-      return users.find({});
+      return await users.find({});
     } catch (error) {
       logger.error(error);
+      return error;
     }
   }
 
-  readById(id) {
+  async getOne(id) {
     try {
-      return users.findById({ _id: id });
+      return await users.findById({ _id: id });
     } catch (error) {
       logger.error(error);
+      return error;
     }
   }
   async update(data) {
     try {
-      const { id, title, thumbnail, price, stock } = data;
+      const { id, username, image, phone } = data;
       const filter = { _id: id };
       const update = {
-        title,
-        thumbnail,
-        price,
-        stock,
-        updated_at_utc: Date.now(),
+        username,
+        image,
+        phone,
+        updated_at: Date.now(),
       };
 
       const result = Promise.resolve(users.findOneAndUpdate(filter, update));
@@ -43,6 +45,7 @@ module.exports = class UserDAO {
       return users.findOne(filter);
     } catch (error) {
       logger.error(error);
+      return error;
     }
   }
 
@@ -51,14 +54,16 @@ module.exports = class UserDAO {
       return users.findByIdAndDelete({ _id: id });
     } catch (error) {
       logger.error(error);
+      return error;
     }
   }
 
-  getByName(name) {
+  getByName(email) {
     try {
-      return users.find({ name });
+      return users.find({ email });
     } catch (error) {
       logger.error(error);
+      return error;
     }
   }
 };

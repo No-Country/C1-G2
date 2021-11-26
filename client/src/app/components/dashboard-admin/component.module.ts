@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CardsComponent } from './card/card.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { CardsComponent } from './components/card/card.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const APP_ROUTES: Routes = [
   { path: 'card', component: CardsComponent },

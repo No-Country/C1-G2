@@ -21,10 +21,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 //routes
+<<<<<<< HEAD
 app.use(PREFIX, petsRouter);
 app.use(PREFIX, usersRouter);
 app.use(PREFIX, petsRouter);
 app.use(PREFIX, ongRouter);
+=======
+app.use(PREFIX, usersRouter);
+app.use(PREFIX, petsRouter);
+app.use('/ong/', ongRouter);
+>>>>>>> develop
 
 app.get(`${PREFIX}health`, (req, res) => {
   res.status(200).json({ status: 'OK' });

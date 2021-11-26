@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const petController = require('../controllers/pet.controller');
 
-router.post('/', petController.create)
+router.post('/', petController.create);
 
 router.get('/list', petController.read);
 router.get('/:id', petController.readById);
@@ -14,4 +14,3 @@ router.delete('/delete', petController.delete);
 router.put('/update/:id', petController.update);
 
 module.exports = router;
-

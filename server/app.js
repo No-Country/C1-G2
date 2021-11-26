@@ -10,7 +10,7 @@ const corsOptions = {
 const { PORT } = require('./src/config/index');
 
 const usersRouter = require('./src/routes/users.routes');
-const petsRouter = require('./src/routes/pet.router');
+const petsRouter = require('./src/routes/pet.routes');
 const ongRouter = require('./src/routes/ong.router');
 const { getConnection } = require('./src/models/connection');
 
@@ -23,8 +23,8 @@ app.use(cors(corsOptions));
 //routes
 app.use(PREFIX, petsRouter);
 app.use(PREFIX, usersRouter);
-app.use('/pets/', petsRouter);
-app.use('/ong/', ongRouter);
+app.use(PREFIX, petsRouter);
+app.use(PREFIX, ongRouter);
 
 app.get(`${PREFIX}health`, (req, res) => {
   res.status(200).json({ status: 'OK' });

@@ -24,5 +24,29 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     extralink: false,
     submenu: [],
+  },
+  {
+    path: "",
+    title: "Publicaciones",
+    icon: "mdi mdi-dots-horizontal",
+    class: "nav-small-cap",
+    extralink: true,
+    submenu: [],
+  },
+  {
+    path: "/admin/pets-adoption",
+    title: "Adopcion",
+    icon: "mdi mdi-gauge",
+    class: "",
+    extralink: false,
+    submenu: [],
+  },
+  {
+    path: "/admin/pets-lost",
+    title: "Perdidas",
+    icon: "mdi mdi-gauge",
+    class: "",
+    extralink: false,
+    submenu: [],
   }
 ];

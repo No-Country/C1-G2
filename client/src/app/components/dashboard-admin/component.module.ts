@@ -23,6 +23,6 @@ const APP_ROUTES: Routes = [
     ReactiveFormsModule,
     NgbModule
   ],
-  declarations: []
+  declarations: [CardsComponent, DashboardComponent]
 })
 export class ComponentsModule { }

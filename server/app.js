@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const PREFIX = '/api/pet-adoption/';
+const PREFIX = '/api/pet_adoption/';
 const app = express();
 const cors = require('cors');
 const { logger } = require('./src/utils/logger');
@@ -20,9 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
-
 //routes
-
+app.use(PREFIX, petsRouter);
 app.use(PREFIX, usersRouter);
 app.use('/pets/', petsRouter);
 app.use('/ong/', ongRouter);

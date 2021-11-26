@@ -10,9 +10,17 @@ declare function customInitFunctions(): undefined;
 
 export class HomeComponent implements OnInit {
 
-  constructor() { }
-  
+  public isLoading: boolean;
+
+  constructor() {
+    this.isLoading = true;
+  }
+
   ngOnInit(): void {
     customInitFunctions();
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
   }
 }

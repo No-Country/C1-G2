@@ -351,5 +351,4 @@ const customInitCarousel = () => {
 };
 
 customInitFunctions();
-
 customInitCarousel();

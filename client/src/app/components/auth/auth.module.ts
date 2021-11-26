@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Components
 import { SignInComponent } from './signin/sign-in.component';
@@ -20,6 +21,8 @@ const APP_ROUTES: Routes = [
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(APP_ROUTES)
   ]
 })

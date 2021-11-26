@@ -2,6 +2,16 @@
   background-image: url("src/assets/images/sign-in-image.jpg");
 }
 
+.button-save {
+  color: #fff;
+  background-color: #fb771a;
+  border-color: #fb771a;
+}
+
+.container-checkbox-sign-in {
+  margin-left: 1.7rem;
+}
+
 a {
   -webkit-transition: .3s all ease;
   -o-transition     : .3s all ease;
@@ -23,7 +33,7 @@ h2 {
 .half,
 .half .container>.row {
   height    : 100vh;
-  min-height: 700px;
+  min-height: 100%;
 }
 
 @media (max-width: 991.98px) {

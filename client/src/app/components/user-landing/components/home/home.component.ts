@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 declare function customInitFunctions(): undefined;
-declare function customInitFunctions2(): undefined;
 
 @Component({
   selector: 'app-home',
@@ -19,7 +18,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     customInitFunctions();
-    customInitFunctions2();
 
     setTimeout(() => {
       this.isLoading = false;

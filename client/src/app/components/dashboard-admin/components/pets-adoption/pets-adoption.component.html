@@ -1,41 +1,25 @@
-
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Id</th>
-      <th scope="col">Raza</th>
-      <th scope="col">Especie</th>
-      <th scope="col">Color</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Edad</th>
-      <th scope="col">Dirección</th>
       <th scope="col">Fecha de publicación</th>
+      <th scope="col">Especie</th>
       <th scope="col">Categoria</th>
-      <th scope="col">Castrado</th>
       <th scope="col">Autorizado</th>
-      <th scope="col">Género</th>
-      <th scope="col">Imagen</th>
-
+      <th scope="col">Acción</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor= "let pet of adoption">
-      <td> {{pet.petname}} </td>
-      <td> {{pet.userid}} </td>
-      <td> {{pet.race}} </td>
-      <td> {{pet.species}} </td>
-      <td> {{pet.color}} </td>
-      <td> {{pet.description}} </td>
-      <td> {{pet.age}} </td>
-      <td> {{pet.direction}} </td>
-      <td> {{pet.publicationDate}} </td>
-      <td> {{pet.category}} </td>
-      <td> {{pet.is_castrated}} </td>
-      <td> {{pet.is_authorized}} </td>
-      <td> {{pet.gender}} </td>
-      <td> {{pet.image}} </td>
+    <tr *ngFor="let pet of adoption">
+      <td>{{ pet.petname }}</td>
+      <td>{{ pet.publicationDate }}</td>
+      <td>{{ pet.species }}</td>
+      <td>{{ pet.category }}</td>
+      <td>{{ pet.is_authorized }}</td>
+      <td>
+        <i class="fas fa-edit text-primary"></i>
+        <i class="fas fa-trash text-danger"></i>
+      </td>
     </tr>
   </tbody>
-  </table>
+</table>

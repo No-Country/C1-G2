@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FullComponent } from './components/dashboard-admin/full/full.component';
-
+// Components
+import { FullComponent } from './components/admin/full/full.component';
 
 export const Approutes: Routes = [
   // ADMIN Modules
@@ -10,7 +9,7 @@ export const Approutes: Routes = [
     path: 'admin',
     component: FullComponent,
     children: [
-      { path: '', loadChildren: () => import('./components/dashboard-admin/component.module').then(m => m.ComponentsModule) },
+      { path: '', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule) },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ]
   },

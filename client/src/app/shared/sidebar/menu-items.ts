@@ -34,7 +34,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: [],
   },
   {
-    path: "/admin/pets-adoption",
+    path: "/admin/adoption-table",
     title: "Lista",
     icon: "mdi mdi-gauge",
     class: "",

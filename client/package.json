@@ -1,6 +1,6 @@
 {
-  "name": "admin-pro-angular-lite",
-  "version": "0.0.0",
+  "name": "animal-app",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

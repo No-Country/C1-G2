@@ -4,6 +4,7 @@ import { HomeComponent } from "./home.component";
 import { RouterModule, Routes } from "@angular/router";
 
 import { CarouselModule } from "../../../../shared/carousel/carousel.module";
+import { LoadingModule } from "src/app/shared/loading/loading.module";
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CarouselModule, CommonModule, RouterModule.forChild(routes)],
+  imports: [
+    CarouselModule,
+    CommonModule,
+    LoadingModule,
+    RouterModule.forChild(routes)],
 })
-export class HomeModule {}
+export class HomeModule { }

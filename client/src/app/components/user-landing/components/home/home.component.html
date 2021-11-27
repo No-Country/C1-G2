@@ -1,6 +1,6 @@
 <app-loading *ngIf="isLoading"></app-loading>
 
-<div *ngIf="!isLoading">
+<div [ngStyle]="{'display': !isLoading ? 'block' : 'none' }">
   <!-- Sub Header -->
   <div class="sub-header">
     <div class="container">

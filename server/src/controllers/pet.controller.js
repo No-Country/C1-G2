@@ -46,9 +46,11 @@ exports.readById = async (req, res) => {
 
 exports.readByName = async (req, res) => {
   try {
-    const petName = req.query.petname;
+    
+    const  { petname } = req.query;
+
     const Pet = new PetService();
-    const pets = await Pet.getByName(petName);
+    const pets = await Pet.getByName(petname);
     return res.status(200).json(pets);
   } catch (error) {
     logger.error(error);

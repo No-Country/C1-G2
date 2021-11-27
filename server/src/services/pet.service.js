@@ -6,8 +6,9 @@ module.exports = class PetService {
         try{
             const pets = await new PetDAO();
             return pets.create(pet);
-        }catch(err){
-            logger.error('[falla al guardar]', err);
+        }catch(error){
+            logger.error('[falla al guardar]', error);
+            return error
         }
     }
 
@@ -19,8 +20,9 @@ module.exports = class PetService {
                 return('{error: "No hay pets cargados."}');
             }
             return pets;
-        }catch(err){
-            logger.error(err);
+        }catch(error){
+            logger.error(error);
+            return error
         }
     }  
 
@@ -32,15 +34,11 @@ module.exports = class PetService {
                 return('{error: "No hay pets con el id: "}' + id)
             }
             return pets;
-        }catch(err){
-            logger.error(err);
+        }catch(error){
+            logger.error(error);
+            return error
         }        
     }
-
-
-
-
-
 
     async getByName(name){
         try{
@@ -52,6 +50,7 @@ module.exports = class PetService {
             return pets;
         }catch(error){
             logger.error(error);
+            return error
         }
     }
 
@@ -65,6 +64,7 @@ module.exports = class PetService {
             return pets;
         }catch(error){
             logger.error(error);
+            return error
         }
     }
 
@@ -78,6 +78,7 @@ module.exports = class PetService {
             return pets;
         }catch(error){
             logger.error(error);
+            return error
         }
     }
 
@@ -87,6 +88,7 @@ module.exports = class PetService {
             return pets.delete(id);
         }catch(error){
             logger.error('[falla al guardar]', error);
+            return error
         }
     }
 
@@ -96,6 +98,7 @@ module.exports = class PetService {
             return pets.update(id,pet);
         }catch(error){
             logger.error('[falla al modificar]', error);
+            return error
         }
     }
 }

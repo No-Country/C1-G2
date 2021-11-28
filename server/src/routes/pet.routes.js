@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const petController = require('../controllers/pet.controller');
-
+//Rutas
 router.post('/', petController.create);
 
 router.get('/list', petController.read);

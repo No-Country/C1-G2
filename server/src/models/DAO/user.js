@@ -58,7 +58,7 @@ module.exports = class UserDAO {
     }
   }
 
-  getByName(email) {
+  getByEmail(email) {
     try {
       return users.find({ email });
     } catch (error) {

@@ -9,7 +9,7 @@
     "hook-install": "precommit install",
     "hook-remove": "precommit remove",
     "precommit": "eslint 'src/**/*.js'",
-    "start": "node app"
+    "start": "NODE_ENV=production node app.js"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",
@@ -19,8 +19,11 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
     "morgan": "^1.10.0",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {

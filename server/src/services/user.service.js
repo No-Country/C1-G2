@@ -41,6 +41,19 @@ module.exports = class UserService {
     }
   }
 
+  async getEmail(email) {
+    try {
+      const user = await new UserDAO().getByEmail(email);
+      if (user === undefined) {
+        return boom.notFound(user);
+      }
+      return user;
+    } catch (err) {
+      logger.error(err);
+      return err;
+    }
+  }
+
   async updateUser(data) {
     try {
       const user = new UserDAO();

@@ -1,7 +1,7 @@
 const { logger } = require('../utils/logger');
 const bcrypt = require('bcrypt');
 const boom = require('@hapi/boom');
-const UserService = require('../services/user');
+const UserService = require('../services/user.service');
 const User = new UserService();
 
 exports.create = async (req, res) => {
@@ -50,6 +50,23 @@ exports.readById = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await User.getById(id);
+    if (user === null) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      res.status(200).json({ user });
+    }
+  } catch (error) {
+    logger.error(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
+  }
+};
+
+exports.readByEmail = async (req, res) => {
+  try {
+    const { email } = req.query;
+    const user = await User.getEmail(email);
     if (user === null) {
       res.status(404).json({ message: 'User not found' });
     } else {

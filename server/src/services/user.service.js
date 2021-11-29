@@ -1,6 +1,8 @@
 const { logger } = require('../utils/logger');
 const UserDAO = require('../models/DAO/user');
-// const bcrypt = require('bcrypt');
+const passport = require('passport');
+const { Strategy: LocalStrategy } = require('passport-local');
+const bcrypt = require('bcrypt');
 const boom = require('@hapi/boom');
 
 module.exports = class UserService {
@@ -41,6 +43,19 @@ module.exports = class UserService {
     }
   }
 
+  async getEmail(email) {
+    try {
+      const user = await new UserDAO().getByEmail(email);
+      if (user === undefined) {
+        return boom.notFound(user);
+      }
+      return user;
+    } catch (err) {
+      logger.error(err);
+      return err;
+    }
+  }
+
   async updateUser(data) {
     try {
       const user = new UserDAO();
@@ -62,6 +77,23 @@ module.exports = class UserService {
       return new UserDAO().delete(id);
     } catch (err) {
       logger.error('[]');
+      return err;
+    }
+  }
+
+  async checkLogin(email, password) {
+    try {
+      const user = await new UserDAO().getByEmail(email);
+      if (user === undefined) {
+        return boom.notFound(user);
+      }
+      const isValid = bcrypt.compareSync(password, user[0].password);
+      if (!isValid) {
+        return boom.unauthorized(isValid);
+      }
+      return { message: 'Login successful' };
+    } catch (err) {
+      logger.error(err);
       return err;
     }
   }

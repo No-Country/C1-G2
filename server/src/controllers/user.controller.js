@@ -113,35 +113,20 @@ exports.delete = async (req, res) => {
       .json({ message: boom.badData(error).output.payload.message });
   }
 };
-/*
-exports.login = async (req, res, next) => {
+
+exports.login = async (req, res) => {
   try {
     const { email, password } = await req.body;
-    let user = await User.findOne({
-      where: { email: email },
-    });
+    const user = await User.checkLogin(email, password);
 
-    const pass = user.dataValues.password;
-    const validUser = user.dataValues.email;
-    if (!user) {
-      return next(boom.unauthorized());
-    }
-    if (user.dataValues.email == email && bcrypt.compare(password, pass)) {
-      req.session.user = validUser;
-      res.status(202).json({ message: 'User logged in' });
-    } else {
-      return next(boom.unauthorized());
-    }
+    return res.status(200).json({ user });
   } catch (error) {
     logger.error(error);
     res.status(500).send(error.errors);
   }
 };
 
-
 exports.logout = (req, res) => {
   req.session.destroy();
   res.status(200).json({ message: 'User logged out' });
 };
-
-*/

@@ -1,4 +1,3 @@
-import { AccordionModule } from './shared/accordion/accordion.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -47,7 +46,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BreadcrumbComponent
   ],
   imports: [
-    AccordionModule,
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,

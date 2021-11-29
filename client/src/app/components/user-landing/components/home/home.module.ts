@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { HomeComponent } from "./home.component";
 import { RouterModule, Routes } from "@angular/router";
 
+import { AccordionModule } from "src/app/shared/accordion/accordion.module";
 import { CarouselModule } from "../../../../shared/carousel/carousel.module";
 import { LoadingModule } from "src/app/shared/loading/loading.module";
 
@@ -16,6 +17,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [HomeComponent],
   imports: [
+    AccordionModule,
     CarouselModule,
     CommonModule,
     LoadingModule,

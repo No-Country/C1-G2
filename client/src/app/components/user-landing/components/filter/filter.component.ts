@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from "@angular/core";
+import { Component, AfterViewInit, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
 
 declare function customInitFilter(): undefined;
 
@@ -7,7 +7,10 @@ declare function customInitFilter(): undefined;
   templateUrl: "./filter.component.html",
   styleUrls: ["./filter.component.css"],
 })
-export class FilterComponent implements AfterViewInit {
+export class FilterComponent implements AfterViewInit, OnChanges {
+
+  @Input() isLoading: boolean = true;
+
   selectedItem = 0;
 
   buttons: { dataFilter: string; titulo: string }[] = [
@@ -80,7 +83,14 @@ export class FilterComponent implements AfterViewInit {
     },
   ];
 
-  constructor() {}
+  constructor() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.isLoading.currentValue) {
+      customInitFilter();
+    }
+  }
 
   ngAfterViewInit(): void {
     customInitFilter();

@@ -4,11 +4,8 @@ import { HomeComponent } from "./home.component";
 import { RouterModule, Routes } from "@angular/router";
 
 import { CarouselModule } from "../../../../shared/carousel/carousel.module";
-<<<<<<< HEAD
-import { LoadingModule } from "src/app/shared/loading/loading.module";
-=======
 import { FilterModule } from "../filter/filter.module";
->>>>>>> 32c2a1e55a4977425ebe7951e15a0459de4ab3b7
+import { LoadingModule } from "src/app/shared/loading/loading.module";
 
 const routes: Routes = [
   {
@@ -22,13 +19,9 @@ const routes: Routes = [
   imports: [
     CarouselModule,
     CommonModule,
-<<<<<<< HEAD
     LoadingModule,
-    RouterModule.forChild(routes)],
-=======
-    FilterModule,
     RouterModule.forChild(routes),
+    FilterModule
   ],
->>>>>>> 32c2a1e55a4977425ebe7951e15a0459de4ab3b7
 })
 export class HomeModule { }

@@ -351,6 +351,14 @@ const customInitCarousel = () => {
 };
 
 const customInitFilter = () => {
+  $(document).ready(function () {
+    $(".filters ul li:first").addClass("active");
+
+    setTimeout(() => {
+      $(".filters ul li:first").click();
+    }, 200);
+  });
+
   $(".filters ul li").click(function () {
     $(".filters ul li").removeClass("active");
     $(this).addClass("active");

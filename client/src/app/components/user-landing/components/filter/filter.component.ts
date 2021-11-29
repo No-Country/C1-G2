@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { Component, AfterViewInit } from "@angular/core";
 
 declare function customInitFilter(): undefined;
 
@@ -7,31 +7,80 @@ declare function customInitFilter(): undefined;
   templateUrl: "./filter.component.html",
   styleUrls: ["./filter.component.css"],
 })
-export class FilterComponent implements OnInit, AfterViewInit {
+export class FilterComponent implements AfterViewInit {
   selectedItem = 0;
 
   buttons: { dataFilter: string; titulo: string }[] = [
     {
       dataFilter: "*",
-      titulo: "All Meetings",
+      titulo: "Todos",
     },
     {
       dataFilter: ".soon",
-      titulo: "Soon",
+      titulo: "En adopción",
     },
     {
       dataFilter: ".imp",
-      titulo: "Important",
+      titulo: "Perdidos",
     },
     {
       dataFilter: ".att",
-      titulo: "Attractive",
+      titulo: "Encontrados",
+    },
+  ];
+
+  cards: {
+    clase: string;
+    img: string;
+    fecha: string;
+    titulo: string;
+    texto: string;
+  }[] = [
+    {
+      clase: "all",
+      img: "assets/images/meeting-01.jpg",
+      fecha: "Nov 12",
+      titulo: "New Lecturers Meeting",
+      texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+    },
+    {
+      clase: "all soon",
+      img: "assets/images/meeting-02.jpg",
+      fecha: "Nov 12",
+      titulo: "New Lecturers Meeting",
+      texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+    },
+    {
+      clase: "all imp",
+      img: "assets/images/meeting-03.jpg",
+      fecha: "Nov 12",
+      titulo: "New Lecturers Meeting",
+      texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+    },
+    {
+      clase: "all alt att",
+      img: "assets/images/meeting-04.jpg",
+      fecha: "Nov 12",
+      titulo: "New Lecturers Meeting",
+      texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+    },
+    {
+      clase: "all alt att",
+      img: "assets/images/meeting-04.jpg",
+      fecha: "Nov 12",
+      titulo: "New Lecturers Meeting",
+      texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+    },
+    {
+      clase: "all alt att",
+      img: "assets/images/meeting-04.jpg",
+      fecha: "Nov 12",
+      titulo: "New Lecturers Meeting",
+      texto: "Morbi in libero blandit lectus cursus ullamcorper.",
     },
   ];
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     customInitFilter();

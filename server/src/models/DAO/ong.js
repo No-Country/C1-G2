@@ -1,4 +1,4 @@
-const { logger } = requiere('../../utils/logger');
+const { logger } = require('../../utils/logger');
 const ongs = require('../schemas/ong.model');
 
 module.exports = class OngDAO {
@@ -23,7 +23,7 @@ module.exports = class OngDAO {
 
     readById(id) {
         try {
-           return ongs.findById( _id: id);
+           return ongs.findById( { _id: id });
         }catch(error){
             logger.error(error);
             return error
@@ -61,7 +61,7 @@ module.exports = class OngDAO {
         try {
             const update = {
                 nit: ong.nit,
-                name: omg.name,
+                name: ong.name,
                 phone: ong.phone,
                 email: ong.email,
                 is_active: ong.is_active,

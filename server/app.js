@@ -11,7 +11,7 @@ const { PORT } = require('./src/config/index');
 
 const usersRouter = require('./src/routes/users.routes');
 const petsRouter = require('./src/routes/pet.routes');
-// const ongRouter = require('./src/routes/ong.router');
+const ongsRouter = require('./src/routes/ong.routes');
 const { getConnection } = require('./src/models/connection');
 
 //middlewares
@@ -23,7 +23,7 @@ app.use(cors(corsOptions));
 //routes
 app.use(`${PREFIX}pets`, petsRouter);
 app.use(`${PREFIX}users`, usersRouter);
-// app.use(`${PREFIX}ong`, ongRouter);
+app.use(`${PREFIX}ongs`, ongsRouter);
 app.get(`${PREFIX}health`, (req, res) => {
   res.status(200).json({ status: 'OK' });
 });

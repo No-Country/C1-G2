@@ -7,7 +7,7 @@ module.exports = class PetService {
             const pets = await new PetDAO();
             return pets.create(pet);
         }catch(error){
-            logger.error('[falla al guardar]', error);
+            logger.error('[Fall al guardar]', error);
             return error
         }
     }
@@ -17,7 +17,7 @@ module.exports = class PetService {
             const pets = await new PetDAO().read();
 
             if(pets === undefined){
-                return('{error: "No hay pets cargados."}');
+                return('{Error: "No hay pets cargados."}');
             }
             return pets;
         }catch(error){
@@ -45,7 +45,7 @@ module.exports = class PetService {
             const pets = await new PetDAO().readByName(name);
 
             if(pets === undefined){
-                return('{error: "No hay pets cargados con el nombre: "}');
+                return('{error: "No hay pets cargados con el nombre: "}' + name);
             }
             return pets;
         }catch(error){
@@ -87,7 +87,7 @@ module.exports = class PetService {
             const pets = new PetDAO();
             return pets.delete(id);
         }catch(error){
-            logger.error('[falla al guardar]', error);
+            logger.error('[falla al eliminar]', error);
             return error
         }
     }
@@ -97,7 +97,7 @@ module.exports = class PetService {
             const pets = new PetDAO();
             return pets.update(id,pet);
         }catch(error){
-            logger.error('[falla al modificar]', error);
+            logger.error('[Fallo al modificar]', error);
             return error
         }
     }

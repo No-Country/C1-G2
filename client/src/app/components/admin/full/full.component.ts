@@ -2,7 +2,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-//declare var $: any;
 
 @Component({
   selector: 'app-full-layout',

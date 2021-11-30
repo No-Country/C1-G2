@@ -39,4 +39,8 @@
 
 ### Contributors
 
--
+- Alacran86
+- davidnicsamm
+- morenogonza
+- SosegadoWebDev
+- c0dejohn

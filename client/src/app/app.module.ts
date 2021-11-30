@@ -9,25 +9,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
+// Components
 import { FullComponent } from './components/admin/full/full.component';
-
+import { AppComponent } from './app.component';
 import { NavigationComponent } from './shared/header-navigation/navigation.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 
-
+// Routes
 import { Approutes } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SpinnerComponent } from './shared/spinner.component';
-
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { AccordionComponent } from './shared/accordion/accordion.component';
-
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -39,7 +34,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent,
     FullComponent,
     NavigationComponent,
     SidebarComponent,

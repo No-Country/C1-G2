@@ -23,7 +23,7 @@ const routes: Routes = [
     CommonModule,
     LoadingModule,
     RouterModule.forChild(routes),
-    FilterModule
+    FilterModule,
   ],
 })
-export class HomeModule { }
+export class HomeModule {}

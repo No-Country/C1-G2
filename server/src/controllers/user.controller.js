@@ -1,5 +1,5 @@
 const { logger } = require('../utils/logger');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const boom = require('@hapi/boom');
 const UserService = require('../services/user.service');
 const User = new UserService();
@@ -37,7 +37,7 @@ exports.create = async (req, res) => {
 exports.read = async (req, res) => {
   try {
     const users = await User.getAll();
-    res.status(200).json({ users });
+    res.status(200).json({ users: users });
   } catch (error) {
     logger.error(error);
     return res
@@ -112,21 +112,4 @@ exports.delete = async (req, res) => {
       .status(boom.badData(error).output.statusCode)
       .json({ message: boom.badData(error).output.payload.message });
   }
-};
-
-exports.login = async (req, res) => {
-  try {
-    const { email, password } = await req.body;
-    const user = await User.checkLogin(email, password);
-
-    return res.status(200).json({ user });
-  } catch (error) {
-    logger.error(error);
-    res.status(500).send(error.errors);
-  }
-};
-
-exports.logout = (req, res) => {
-  req.session.destroy();
-  res.status(200).json({ message: 'User logged out' });
 };

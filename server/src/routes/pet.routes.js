@@ -1,16 +1,16 @@
 const express = require('express');
-const router = express.Router();
+const Router = express.Router();
 const petController = require('../controllers/pet.controller');
 //Rutas
-router.post('/', petController.create);
+Router.post('/', petController.create);
 
-router.get('/list', petController.read);
-router.get('/byid/:id', petController.readById);
-router.get('/name', petController.readByName);
-router.get('/gender', petController.readByGender);
-router.get('/race', petController.readByRace);
-router.delete('/delete', petController.delete);
+Router.get('/list', petController.read);
+Router.get('/byid/:id', petController.readById);
+Router.get('/name', petController.readByName);
+Router.get('/gender', petController.readByGender);
+Router.get('/race', petController.readByRace);
+Router.delete('/delete', petController.delete);
 
-router.put('/update/:id', petController.update);
+Router.put('/update/:id', petController.update);
 
-module.exports = router;
+module.exports = Router;

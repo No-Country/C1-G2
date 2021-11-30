@@ -1,8 +1,6 @@
 const { logger } = require('../utils/logger');
 const UserDAO = require('../models/DAO/user');
-const passport = require('passport');
-const { Strategy: LocalStrategy } = require('passport-local');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const boom = require('@hapi/boom');
 
 module.exports = class UserService {
@@ -91,35 +89,14 @@ module.exports = class UserService {
       if (!isValid) {
         return boom.unauthorized(isValid);
       }
-      return { message: 'Login successful' };
+      return {
+        id: user[0]._id,
+        username: user[0].username,
+        role: user[0].role,
+      };
     } catch (err) {
       logger.error(err);
       return err;
     }
   }
 };
-/*
-  async getOne(id) {
-    try {
-      const users = await new UserDAO().readById(id);
-
-      if (users === undefined) {
-        return new UserDAO().read();
-      }
-      return users;
-    } catch (error) {
-      logger.error(error);
-    }
-  }
-
-
-  nameFilter(name) {
-    try {
-      return new UserDAO().getByTitle(name);
-    } catch (err) {
-      logger.error(err);
-    }
-  }
-
-};
-*/

@@ -4,15 +4,39 @@ const PetService = require('../services/pet.service');
 exports.create = async (req, res) => {
   try {
     const Pet = new PetService();
-    const { _id, petname, race, color, gender, userid, age } = await req.body;
+    const {
+      _id,
+      petname,
+      image,
+      userid,
+      race,
+      species,
+      color,
+      gender,
+      description,
+      age,
+      direction,
+      publicationDate,
+      category,
+      is_castrated,
+      is_authorized,
+    } = await req.body;
     const newPet = {
       _id: _id,
       petname: petname,
+      image: image,
       race: race,
+      species: species,
       color: color,
       gender: gender,
+      description: description,
       userid: userid,
       age: age,
+      direction: direction,
+      publicationDate: publicationDate,
+      category: category,
+      is_castrated: is_castrated,
+      is_authorized: is_authorized,
     };
     await Pet.register(newPet);
     return res.status(201).json({ message: 'Pet created' });
@@ -46,9 +70,10 @@ exports.readById = async (req, res) => {
 
 exports.readByName = async (req, res) => {
   try {
-    const petName = req.query.petname;
+    const { petname } = req.query;
+
     const Pet = new PetService();
-    const pets = await Pet.getByName(petName);
+    const pets = await Pet.getByName(petname);
     return res.status(200).json(pets);
   } catch (error) {
     logger.error(error);

@@ -379,4 +379,5 @@ const customInitFilter = () => {
 };
 
 customInitFunctions();
+customInitFilter();
 customInitCarousel();

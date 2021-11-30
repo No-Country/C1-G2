@@ -25,7 +25,7 @@ app.use(cors(corsOptions));
 app.use(`${PREFIX}pets`, petsRouter);
 app.use(`${PREFIX}users`, usersRouter);
 app.use(`${PREFIX}auth`, authRouter);
-app.use(`${PREFIX}ongs`, ongsRouter);
+app.use(`${PREFIX}ongs`, ongRouter);
 app.get(`${PREFIX}health`, (req, res) => {
   res.status(200).json({ status: 'OK' });
 });

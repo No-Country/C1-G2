@@ -1,0 +1,52 @@
+<section class="meetings-page" id="meetings" *ngIf="cards && buttons">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="filters">
+              <ul>
+                <li
+                  [attr.data-filter]="button.dataFilter"
+                  *ngFor="let button of buttons; let i = index"
+                >
+                  {{ button.titulo }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="row grid">
+              <!-- comienzo tarjeta -->
+              <div
+                class="col-lg-4 templatemo-item-col"
+                [ngClass]="card.clase"
+                *ngFor="let card of cards"
+              >
+                <div class="meeting-item">
+                  <div class="thumb">
+                    <a href="meeting-details.html"
+                      ><img src="assets/images/meeting-03.jpg" alt=""
+                    /></a>
+                  </div>
+                  <div class="down-content">
+                    <div class="date">
+                      <h6>{{ card.fecha }}</h6>
+                    </div>
+                    <a href="meeting-details.html"
+                      ><h4>{{ card.titulo }}</h4></a
+                    >
+                    <p>
+                      {{ card.texto }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- fin -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

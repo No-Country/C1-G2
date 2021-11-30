@@ -5,6 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AccordionModule } from "src/app/shared/accordion/accordion.module";
 import { CarouselModule } from "../../../../shared/carousel/carousel.module";
+import { FilterModule } from "../filter/filter.module";
 import { LoadingModule } from "src/app/shared/loading/loading.module";
 
 const routes: Routes = [
@@ -21,6 +22,8 @@ const routes: Routes = [
     CarouselModule,
     CommonModule,
     LoadingModule,
-    RouterModule.forChild(routes)],
+    RouterModule.forChild(routes),
+    FilterModule
+  ],
 })
 export class HomeModule { }

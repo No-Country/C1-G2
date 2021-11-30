@@ -7,10 +7,12 @@
 #main-wrapper {
   width: 100%;
   overflow: hidden;
+  background-color: #f4f6f9;
 }
 
 .page-wrapper {
   background: $body-bg;
+  height: 100%;
   position: relative;
   transition: 0.2s ease-in;
 }

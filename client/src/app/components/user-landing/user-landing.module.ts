@@ -20,7 +20,7 @@ const APP_ROUTES: Routes = [
 @NgModule({
   declarations: [UserLandingComponent],
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule.forChild(APP_ROUTES)
   ],
 })

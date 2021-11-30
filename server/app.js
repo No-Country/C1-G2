@@ -3,13 +3,17 @@ const morgan = require('morgan');
 const PREFIX = '/api/pet_adoption/';
 const app = express();
 const cors = require('cors');
+
 const { logger } = require('./src/utils/logger');
 const corsOptions = {
   origin: '*',
 };
 const { PORT } = require('./src/config/index');
-const petsRouter = require('./src/routes/pets.routes');
+const { validateJWT } = require('./src/middlewares/auth.handler');
 const usersRouter = require('./src/routes/users.routes');
+const authRouter = require('./src/routes/auth.routes');
+const petsRouter = require('./src/routes/pet.routes');
+const ongsRouter = require('./src/routes/ong.routes');
 const { getConnection } = require('./src/models/connection');
 
 //middlewares
@@ -19,9 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 //routes
-app.use(PREFIX, petsRouter);
-app.use(PREFIX, usersRouter);
-
+app.use(`${PREFIX}pets`, validateJWT, petsRouter);
+app.use(`${PREFIX}users`, validateJWT, usersRouter);
+app.use(`${PREFIX}auth`, authRouter);
+app.use(`${PREFIX}ongs`, validateJWT, ongsRouter);
 app.get(`${PREFIX}health`, (req, res) => {
   res.status(200).json({ status: 'OK' });
 });

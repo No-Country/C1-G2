@@ -1,7 +1,7 @@
 const { logger } = require('../utils/logger');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const boom = require('@hapi/boom');
-const UserService = require('../services/user');
+const UserService = require('../services/user.service');
 const User = new UserService();
 
 exports.create = async (req, res) => {
@@ -37,7 +37,7 @@ exports.create = async (req, res) => {
 exports.read = async (req, res) => {
   try {
     const users = await User.getAll();
-    res.status(200).json({ users });
+    res.status(200).json({ users: users });
   } catch (error) {
     logger.error(error);
     return res
@@ -50,6 +50,23 @@ exports.readById = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await User.getById(id);
+    if (user === null) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      res.status(200).json({ user });
+    }
+  } catch (error) {
+    logger.error(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
+  }
+};
+
+exports.readByEmail = async (req, res) => {
+  try {
+    const { email } = req.query;
+    const user = await User.getEmail(email);
     if (user === null) {
       res.status(404).json({ message: 'User not found' });
     } else {
@@ -96,35 +113,3 @@ exports.delete = async (req, res) => {
       .json({ message: boom.badData(error).output.payload.message });
   }
 };
-/*
-exports.login = async (req, res, next) => {
-  try {
-    const { email, password } = await req.body;
-    let user = await User.findOne({
-      where: { email: email },
-    });
-
-    const pass = user.dataValues.password;
-    const validUser = user.dataValues.email;
-    if (!user) {
-      return next(boom.unauthorized());
-    }
-    if (user.dataValues.email == email && bcrypt.compare(password, pass)) {
-      req.session.user = validUser;
-      res.status(202).json({ message: 'User logged in' });
-    } else {
-      return next(boom.unauthorized());
-    }
-  } catch (error) {
-    logger.error(error);
-    res.status(500).send(error.errors);
-  }
-};
-
-
-exports.logout = (req, res) => {
-  req.session.destroy();
-  res.status(200).json({ message: 'User logged out' });
-};
-
-*/

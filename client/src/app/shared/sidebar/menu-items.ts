@@ -40,5 +40,13 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     extralink: false,
     submenu: [],
+  },
+  {
+    path: "/admin/adoption-publish",
+    title: "Publicar",
+    icon: "mdi mdi-gauge",
+    class: "",
+    extralink: false,
+    submenu: [],
   }
 ];

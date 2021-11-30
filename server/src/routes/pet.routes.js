@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const petController = require('../controllers/pet.controller');
-
+//Rutas
 router.post('/', petController.create);
 
 router.get('/list', petController.read);
-router.get('/:id', petController.readById);
+router.get('/byid/:id', petController.readById);
 router.get('/name', petController.readByName);
 router.get('/gender', petController.readByGender);
 router.get('/race', petController.readByRace);

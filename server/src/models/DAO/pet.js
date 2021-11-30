@@ -10,6 +10,7 @@ module.exports = class PetDAO {
             return saveModelPet.save();
         }catch (error){
             logger.error(error)
+            return error;
         }
     }
 
@@ -18,17 +19,16 @@ module.exports = class PetDAO {
             return pets.find({});
         }catch(error){
             logger.error(error);
+            return error;
         }
     }
 
-    readById(id){
-        
-        try{
-            
-                
+    readById(id){        
+        try{  
             return pets.findById({ _id: id });
         }catch(error){
-            logger.error(error)
+            logger.error(error);
+            return error;
         }
     }
 
@@ -37,6 +37,7 @@ module.exports = class PetDAO {
             return pets.find({ petname: name}).exec();
         }catch(error){
             logger.error(error);
+            return error;
         }
     }
 
@@ -46,6 +47,7 @@ module.exports = class PetDAO {
            
         }catch(error){
             logger.error(error);
+            return error;
         }
     }
 
@@ -54,6 +56,7 @@ module.exports = class PetDAO {
             return pets.find({ race: race }).exec();           
         }catch(error){
             logger.error(error);
+            return error;
         }
     }
 
@@ -65,15 +68,12 @@ module.exports = class PetDAO {
             return pets.findByIdAndDelete({_id: id});
         }catch(error){
             logger.error(error);
+            return error;
         }
     }
 
 
     update(id,pet){
-
-        // const filter = {_id: pet._id}
-        // const filter = {_id: id}
-
        
         try{
              const update = {
@@ -92,11 +92,12 @@ module.exports = class PetDAO {
                 is_castrated: pet.is_castrated,
                 is_authorized: pet.is_authorized
             };
-            // const pets = new pets();
+            
             return pets.findOneAndUpdate({_id: id},update,{new: true});
 
         }catch(error){
-             logger.error(error)
+             logger.error(error);
+             return error;
         }
     }
 }

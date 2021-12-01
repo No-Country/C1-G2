@@ -1,0 +1,12 @@
+<div class="row mt-5">
+  <div class="col-5">
+    <input
+      type="file"
+      class="form-control"
+      (change)="capturarArchivo($event)"
+    />
+  </div>
+  <div class="col-4 imagen">
+    <img [src]="preview" />
+  </div>
+</div>

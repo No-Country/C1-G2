@@ -1,22 +1,23 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 // Components
-import { CardsComponent } from './components/card/card.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AdoptionTableComponent } from './components/adoption/adoption-table/adoption-table.component';
-import { AdoptionPublishFormComponent } from './components/adoption/adoption-form/adoption-publish-form.component';
+import { CardsComponent } from "./components/card/card.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { AdoptionTableComponent } from "./components/adoption/adoption-table/adoption-table.component";
+import { AdoptionPublishFormComponent } from "./components/adoption/adoption-form/adoption-publish-form.component";
+import { UploadImageModule } from "../../shared/upload-image/upload-image.module";
 
 const APP_ROUTES: Routes = [
-  { path: 'card', component: CardsComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'adoption-table', component: AdoptionTableComponent },
-  { path: 'adoption-publish', component: AdoptionPublishFormComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: "card", component: CardsComponent },
+  { path: "dashboard", component: DashboardComponent },
+  { path: "adoption-table", component: AdoptionTableComponent },
+  { path: "adoption-publish", component: AdoptionPublishFormComponent },
+  { path: "", redirectTo: "dashboard", pathMatch: "full" },
+  { path: "**", redirectTo: "dashboard" },
 ];
 
 @NgModule({
@@ -25,13 +26,14 @@ const APP_ROUTES: Routes = [
     RouterModule.forChild(APP_ROUTES),
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    UploadImageModule,
   ],
   declarations: [
     AdoptionPublishFormComponent,
     AdoptionTableComponent,
     DashboardComponent,
-    CardsComponent
-  ]
+    CardsComponent,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

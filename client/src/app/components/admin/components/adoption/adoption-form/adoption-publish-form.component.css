@@ -1,0 +1,10 @@
+.button-save {
+    color           : #fff;
+    background-color: #fb771a;
+    border-color    : #fb771a;
+}
+
+.send-button-container {
+    width: 200px;
+    float: right;
+}

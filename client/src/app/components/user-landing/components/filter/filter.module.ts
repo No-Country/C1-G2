@@ -7,4 +7,4 @@ import { FilterComponent } from "./filter.component";
   imports: [CommonModule],
   exports: [FilterComponent],
 })
-export class FilterModule {}
+export class FilterModule { }

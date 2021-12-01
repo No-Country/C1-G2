@@ -1,36 +1,31 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DomSanitizer } from "@angular/platform-browser";
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: "app-upload-image",
   templateUrl: "./upload-image.component.html",
   styleUrls: ["./upload-image.component.css"],
 })
-export class UploadImageComponent implements OnInit {
-  preview: string = "";
+export class UploadImageComponent {
 
   @Output() imageClickedEmitter: EventEmitter<Object> = new EventEmitter();
 
-  constructor(private sanitizer: DomSanitizer) {}
+  public preview: string = "";
 
-  ngOnInit(): void {}
+  constructor() { }
 
-  capturarArchivo(event: any): any {
+  public capturarArchivo(event: any): void {
     const archivo = event.target.files[0];
     this.imageClickedEmitter.emit(archivo);
 
     // para preview con archivo base64
     this.extraerBase64(archivo).then((imagen: any) => {
       this.preview = imagen.base;
-      console.log(archivo);
     });
   }
 
-  extraerBase64 = async ($event: any) =>
-    new Promise((resolve, reject) => {
+  public extraerBase64 = async ($event: any) =>
+    new Promise((resolve) => {
       try {
-        const unsafeImg = window.URL.createObjectURL($event);
-        const imagen = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
         const reader = new FileReader();
         reader.readAsDataURL($event);
         reader.onload = () => {

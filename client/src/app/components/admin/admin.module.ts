@@ -4,6 +4,10 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
+// Angular Fire
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 // Components
 import { CardsComponent } from "./components/card/card.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
@@ -28,6 +32,8 @@ const APP_ROUTES: Routes = [
     ReactiveFormsModule,
     NgbModule,
     UploadImageModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   declarations: [
     AdoptionPublishFormComponent,

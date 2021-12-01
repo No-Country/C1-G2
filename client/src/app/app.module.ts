@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { AngularFireModule } from '@angular/fire/compat';
 
 // Components
 import { FullComponent } from './components/admin/full/full.component';
@@ -23,6 +24,9 @@ import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 
 // Routes
 import { Approutes } from './app-routing.module';
+
+// Environment
+import { environment } from 'src/environments/environment';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -47,6 +51,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
     PerfectScrollbarModule,
     NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot(Approutes, { useHash: false, relativeLinkResolution: 'legacy' })
   ],
   providers: [

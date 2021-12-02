@@ -9,6 +9,7 @@ import { CarouselModule } from "../../../../shared/carousel/carousel.module";
 import { FilterModule } from "../filter/filter.module";
 import { LoadingModule } from "src/app/shared/loading/loading.module";
 import { ContactFormModule } from "src/app/shared/contact-form/contact-form.module";
+import { NavbarModule } from "../navbar/navbar.module";
 
 const routes: Routes = [
   { path: "", component: HomeComponent }
@@ -18,6 +19,7 @@ const routes: Routes = [
   declarations: [HomeComponent],
   imports: [
     ContactFormModule,
+    NavbarModule,
     AccordionModule,
     CarouselModule,
     CommonModule,

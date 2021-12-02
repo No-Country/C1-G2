@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { timer } from 'rxjs';
 
 declare function customInitFunctions(): undefined;
 
@@ -8,9 +9,12 @@ declare function customInitFunctions(): undefined;
   styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
-  public isLoading: boolean;
+  @ViewChild('homeVideo', { static: false })
+  homeVideo!: ElementRef<any>;
+
+  public isLoading: boolean = true;
 
   constructor() {
     this.isLoading = true;
@@ -19,8 +23,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     customInitFunctions();
 
-    setTimeout(() => {
+    const source = timer(1000);
+    source.subscribe(() => {
       this.isLoading = false;
-    }, 3000);
+      this.homeVideo.nativeElement.muted = true;
+      this.homeVideo.nativeElement.autoplay = true;
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.homeVideo.nativeElement.muted = true;
+    this.homeVideo.nativeElement.autoplay = true;
   }
 }

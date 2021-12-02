@@ -1,0 +1,9 @@
+.full-width {
+    width: 100%;
+}
+
+@media only screen and (max-width : 767px) {
+    .tablet-mt-80 {
+        margin-top: 80px;
+    }
+}

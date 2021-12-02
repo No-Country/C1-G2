@@ -1,0 +1,139 @@
+<form 
+  [formGroup]="form" 
+  (ngSubmit)="saveForm()">
+  <div class="form-group">
+    <label for="petname">Nombre</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="petname"
+      placeholder="Nombre de la mascota"
+      id="petname"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="species">Especie</label>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      formControlName="species"
+      id="species">
+      <option selected value="null">Selecciona la especie...</option>
+      <option value="DOG">Can</option>
+      <option value="CAT">Felino</option>
+      <option value="OTHER">Otro</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="race">Raza</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="race"
+      placeholder="Raza de la mascota"
+      id="race"/>
+  </div>
+  <div class="form-group">
+    <label class="d-block">Género</label>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        value="MALE"
+        formControlName="gender"
+        id="gender"/>
+      <label 
+        class="form-check-label" 
+        for="gender"> 
+        Macho 
+      </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        value="FEMALE"
+        formControlName="gender"
+        id="gender"/>
+      <label class="form-check-label" for="gender"> Hembra </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <div id="description" class="form-floating">
+      <textarea
+        formControlName="description"
+        class="form-control"
+        id="floatingTextarea2"
+        style="height: 100px">
+      </textarea>
+      <label for="floatingTextarea2">Fisionomía, personalidad, etc.</label>
+    </div>
+  </div>
+  <div [formGroup]="form.controls.age" class="form-group">
+    <label for="age-range">Rango de edad</label>
+    <select
+      class="form-select"
+      aria-label="age-range input"
+      formControlName="age_range"
+      id="age-range">
+      <option selected value="MONTH">Mes</option>
+      <option value="YEAR">Año</option>
+    </select>
+    <label for="number">Edad</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="number"
+      placeholder="Edad de la mascota"
+      id="number"/>
+  </div>
+  <div class="form-group">
+    <label for="category">Tipo de caso</label>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      formControlName="category"
+      id="category">
+      <option value="ADOPTION">Adopción</option>
+      <option value="FOUND">Encontrado</option>
+      <option value="LOST">Perdido</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="d-block">¿Está castrado/a?</label>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="is_castrated"
+        value="TRUE"
+        formControlName="is_castrated"
+        id="is_castrated"/>
+      <label class="form-check-label" for="is_castrated"> Si </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="is_castrated"
+        value="FALSE"
+        formControlName="is_castrated"
+        id="is_castrated"/>
+      <label 
+        class="form-check-label" 
+        for="is_castrated"> 
+        No 
+      </label>
+    </div>
+    <app-upload-image (imageClickedEmitter)="onImageSelectEmitter($event)"></app-upload-image>
+  </div>
+  <!-- Save button -->
+  <div class="send-button-container">
+    <input
+      type="submit"
+      value="Enviar"
+      class="btn btn-block button-save mb-2"/>
+  </div>
+</form>

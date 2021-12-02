@@ -30,9 +30,9 @@ app.use(`${PREFIX}pets`, validateJWT, petsRouter);
 app.use(`${PREFIX}users`, validateJWT, usersRouter);
 app.use(`${PREFIX}auth`, authRouter);
 app.use(`${PREFIX}ongs`, validateJWT, ongsRouter);
-app.get('/*', (req, res) => {
-  res.sendFile(__dirname + '/src/public/dist/ng-adminpro/');
-});
+//app.get('/*', (req, res) => {
+//  res.sendFile(__dirname + '/src/public/dist/ng-adminpro/');
+//});
 app.get(`${PREFIX}health`, (req, res) => {
   res.status(200).json({ status: 'OK' });
 });

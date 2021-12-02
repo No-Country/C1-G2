@@ -1,12 +1,6 @@
 version: '3.7'
 
 services:
-  frontend:
-    image: pet-adoption-front
-    ports:
-      - '4200:4200'
-    depends_on:
-      - backend
   backend:
     image: pet-adoption-back
     ports:

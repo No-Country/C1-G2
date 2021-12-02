@@ -106,6 +106,7 @@ dist
 #VS utils
 .history/
 server/package-lock.json
+package-lock.json
 server/mongo-volume/
 
 # Logs

@@ -1,0 +1,25 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fecha de publicación</th>
+      <th scope="col">Especie</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Autorizado</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pet of found">
+      <td>{{ pet.petname }}</td>
+      <td>{{ pet.publicationDate }}</td>
+      <td>{{ pet.species }}</td>
+      <td>{{ pet.category }}</td>
+      <td>{{ pet.is_authorized }}</td>
+      <td>
+        <i class="fas fa-edit text-primary"></i>
+        <i class="fas fa-trash text-danger"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -14,12 +14,14 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AdoptionTableComponent } from "./components/adoption/adoption-table/adoption-table.component";
 import { AdoptionPublishFormComponent } from "./components/adoption/adoption-form/adoption-publish-form.component";
 import { UploadImageModule } from "../../shared/upload-image/upload-image.module";
+import { FoundTableComponent } from './components/found/found-table/found-table.component';
 
 const APP_ROUTES: Routes = [
   { path: "card", component: CardsComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "adoption-table", component: AdoptionTableComponent },
   { path: "adoption-publish", component: AdoptionPublishFormComponent },
+  { path: "found-table", component: FoundTableComponent },
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
   { path: "**", redirectTo: "dashboard" },
 ];
@@ -40,6 +42,7 @@ const APP_ROUTES: Routes = [
     AdoptionTableComponent,
     DashboardComponent,
     CardsComponent,
+    FoundTableComponent,
   ],
 })
 export class AdminModule {}

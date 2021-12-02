@@ -2,14 +2,14 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server/app.js",
   "scripts": {
-    "dev": "nodemon app",
+    "dev": "nodemon server/app.js",
     "lint": "eslint .",
     "hook-install": "precommit install",
     "hook-remove": "precommit remove",
     "precommit": "eslint 'src/**/*.js'",
-    "start": "NODE_ENV=production node app.js"
+    "start": "NODE_ENV=production node server/app.js"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",

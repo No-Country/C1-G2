@@ -28,7 +28,7 @@ exports.create = async (req, res) => {
       .status(boom.badData(error).output.statusCode)
       .json({ message: boom.badData(error).output.payload.message });
   }
-}
+};
 
 exports.read = async (req, res) => {
   try {
@@ -62,8 +62,7 @@ exports.readById = async (req, res) => {
 
 exports.readByNit = async (req, res) => {
   try {
-    
-    const  { nit } = req.query
+    const { nit } = req.query;
 
     const Ong = new OngService();
     const ongs = await Ong.getByNit(nit);
@@ -84,8 +83,7 @@ exports.readByNit = async (req, res) => {
 
 exports.readByName = async (req, res) => {
   try {
-    
-    const  { name } = req.query
+    const { name } = req.query;
 
     const Ong = new OngService();
     const ongs = await Ong.getByName(name);
@@ -102,8 +100,8 @@ exports.readByName = async (req, res) => {
   }
 };
 
-exports.delete = async (req,res) => {
-  try{
+exports.delete = async (req, res) => {
+  try {
     const Ong = new OngService();
     const { _id } = await req.body;
     const ongs = await Ong.deleteById(_id);
@@ -120,25 +118,26 @@ exports.delete = async (req,res) => {
   }
 };
 
-exports.update = async (req,res) => {
-  try{
+exports.update = async (req, res) => {
+  try {
     const Ong = new OngService();
-    const {nit, phone, email, is_active, logo, users_publications} = await req.body;
+    const { nit, phone, email, is_active, logo, users_publications } =
+      await req.body;
     const id = req.params.id;
-    const ong = {      
-        nit: nit,       
-        phone: phone,
-        email: email,
-        is_active: is_active,
-        logo: logo,
-        users_publications: users_publications
+    const ong = {
+      nit: nit,
+      phone: phone,
+      email: email,
+      is_active: is_active,
+      logo: logo,
+      users_publications: users_publications,
     };
-    await Ong.updateById(id,ong);
-    return res.status(201).json({ message: 'ONG updated'});    
-  }catch (error) {
+    await Ong.updateById(id, ong);
+    return res.status(201).json({ message: 'ONG updated' });
+  } catch (error) {
     logger.error(error);
      return res
       .status(boom.badData(error).output.statusCode)
       .json({ message: boom.badData(error).output.payload.message });
   }
-}
+};

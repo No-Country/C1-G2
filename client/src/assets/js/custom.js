@@ -288,7 +288,7 @@ const customInitFunctions = () => {
         $w = jQuery(window),
         viewTop = $w.scrollTop(),
         viewBottom = viewTop + $w.height(),
-        _top = $t.offset().top,
+        _top =  $t.offset() ? $t.offset().top : false,
         _bottom = _top + $t.height(),
         compareTop = partial === true ? _bottom : _top,
         compareBottom = partial === true ? _top : _bottom;
@@ -350,5 +350,34 @@ const customInitCarousel = () => {
   });
 };
 
+const customInitFilter = () => {
+  $(document).ready(function () {
+    $(".filters ul li:first").addClass("active");
+
+    setTimeout(() => {
+      $(".filters ul li:first").click();
+    }, 200);
+  });
+
+  $(".filters ul li").click(function () {
+    $(".filters ul li").removeClass("active");
+    $(this).addClass("active");
+
+    var data = $(this).attr("data-filter");
+    $grid.isotope({
+      filter: data,
+    });
+  });
+
+  var $grid = $(".grid").isotope({
+    itemSelector: ".all",
+    percentPosition: true,
+    masonry: {
+      columnWidth: ".all",
+    },
+  });
+};
+
 customInitFunctions();
+customInitFilter();
 customInitCarousel();

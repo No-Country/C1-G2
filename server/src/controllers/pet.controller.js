@@ -89,8 +89,7 @@ exports.readById = async (req, res) => {
 
 exports.readByName = async (req, res) => {
   try {
-    
-    const  { petname } = req.query;
+    const { petname } = req.query;
 
     const Pet = new PetService();
     const pets = await Pet.getByName(petname);

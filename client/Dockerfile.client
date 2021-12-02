@@ -1,0 +1,20 @@
+# Stage 1
+
+FROM node:14.15-alpine as build-step
+
+RUN mkdir -p /pet-adoption-frontend
+
+WORKDIR /pet-adoption-frontend
+
+COPY . /pet-adoption-frontend
+
+RUN npm install -g @angular/cli
+
+EXPOSE 4200
+
+RUN npm run build --prod
+
+
+
+
+

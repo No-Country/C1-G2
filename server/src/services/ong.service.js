@@ -1,5 +1,6 @@
 const { logger } = require('../utils/logger');
 const OngDAO = require('../models/DAO/ong');
+const boom = require('@hapi/boom');
 
 module.exports = class OngService {
     async register(ong){
@@ -31,9 +32,11 @@ module.exports = class OngService {
             const ongs = await new OngDAO().readById(id);
             
             if(ongs == undefined) {
-                 return('{error: "No hay ongs con el id: "}' + id)
+                return boom.notFound(ongs);
             }
             return ongs;
+
+           
         }catch(error){
             logger.error(error);
             return error
@@ -45,7 +48,7 @@ module.exports = class OngService {
             const ongs = await new OngDAO().readByNit(nit);
             
             if(ongs == undefined) {
-                 return('{error: "No hay ongs con el nit: "}' + nit)
+                 return boom.notFound(ongs);
             }
             return ongs;
         }catch(error){
@@ -59,7 +62,7 @@ module.exports = class OngService {
             const ongs = await new OngDAO().readByName(name);
             
             if(ongs == undefined) {
-                 return('{error: "No hay ongs con el nombre: "}' + name)
+                 return boom.notFound(ongs);
             }
             return ongs;
         }catch(error){

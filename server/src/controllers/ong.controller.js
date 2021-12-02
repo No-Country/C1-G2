@@ -1,5 +1,6 @@
 const { logger } = require('../utils/logger');
 const OngService = require('../services/ong.service');
+const boom = require('@hapi/boom');
 
 exports.create = async (req, res) => {
     try{
@@ -15,11 +16,17 @@ exports.create = async (req, res) => {
             logo: logo,
             users_publications: users_publications
         };
-        await Ong.register(newOng);
-        return res.status(201).json( { message: 'ONG created' }) ;        
+        const result = await Ong.register(newOng);
+        if (result.level === 'error') {
+          res.status(500).json({ message: 'ONG not created' });
+        } else {
+          res.status(200).json({ message: 'ONG created' });
+        }       
     }catch (error) {
     logger.error(error);
-    return res.status(406).send(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 }
 
@@ -27,10 +34,12 @@ exports.read = async (req, res) => {
   try {
     const Ong = new OngService();
     const ongs = await Ong.getAll();
-    return res.status(200).json(ongs);
+    return res.status(200).json( { ongs } );
   } catch (error) {
     logger.error(error);
-    return res.status(500).send(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 };
 
@@ -38,10 +47,16 @@ exports.readById = async (req, res) => {
   try {
     const Ong = new OngService();
     const ongs = await Ong.getById(req.params.id);
-    return res.status(200).json(ongs);
+    if (ongs === null || ongs.length == 0)  {
+      res.status(404).json({ message: 'Pet not found' });
+    } else {
+      res.status(200).json({ ongs });
+    }
   } catch (error) {
     logger.error(error);
-    return res.status(500).send(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 };
 
@@ -52,10 +67,18 @@ exports.readByNit = async (req, res) => {
 
     const Ong = new OngService();
     const ongs = await Ong.getByNit(nit);
-    return res.status(200).json(ongs);
+
+    if (ongs === null || ongs.length == 0)  {
+      res.status(404).json({ message: 'Pet not found' });
+    } else {
+      res.status(200).json({ ongs });
+    }
+
   } catch (error) {
     logger.error(error);
-    return res.status(500).send(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 };
 
@@ -66,10 +89,16 @@ exports.readByName = async (req, res) => {
 
     const Ong = new OngService();
     const ongs = await Ong.getByName(name);
-    return res.status(200).json(ongs);
+    if (ongs === null || ongs.length == 0)  {
+      res.status(404).json({ message: 'Pet not found' });
+    } else {
+      res.status(200).json({ ongs });
+    }
   } catch (error) {
     logger.error(error);
-    return res.status(500).send(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 };
 
@@ -77,11 +106,17 @@ exports.delete = async (req,res) => {
   try{
     const Ong = new OngService();
     const { _id } = await req.body;
-    await Ong.deleteById(_id);
-    return res.status(201).json({ message: 'ONG deleted'});  
+    const ongs = await Ong.deleteById(_id);
+    if (ongs === undefined || ongs === null) {
+      res.status(404).json({ message: 'Pet not found' });
+    } else {
+      res.status(200).json({ message: 'Pet deleted' });
+    }
   }catch (error) {
     logger.error(error);
-    return res.status(500).send(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 };
 
@@ -102,6 +137,8 @@ exports.update = async (req,res) => {
     return res.status(201).json({ message: 'ONG updated'});    
   }catch (error) {
     logger.error(error);
-    return res.status(500).send(error);
+     return res
+      .status(boom.badData(error).output.statusCode)
+      .json({ message: boom.badData(error).output.payload.message });
   }
 }

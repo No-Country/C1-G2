@@ -5,6 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 // Component
 import { UserLandingComponent } from "./user-landing.component";
 
+
 const APP_ROUTES: Routes = [
   {
     path: "",
@@ -20,7 +21,7 @@ const APP_ROUTES: Routes = [
 @NgModule({
   declarations: [UserLandingComponent],
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule.forChild(APP_ROUTES)
   ],
 })

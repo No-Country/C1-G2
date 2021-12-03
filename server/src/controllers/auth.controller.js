@@ -9,7 +9,12 @@ exports.login = async (req, res) => {
     const { email, password } = await req.body;
     const user = await User.checkLogin(email, password);
     const token = await generateJWT(user.id);
-    res.status(200).json({ user, token });
+
+    res.status(200).json({
+      ok: true,
+      user,
+      token,
+    });
   } catch (error) {
     logger.error(error);
     res.status(500).send(error.errors);

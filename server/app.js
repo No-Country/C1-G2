@@ -24,7 +24,7 @@ app.use(cors(corsOptions));
 
 //routes
 app.use(`${PREFIX}pets`, validateJWT, petsRouter);
-app.use(`${PREFIX}users`, validateJWT, usersRouter);
+app.use(`${PREFIX}users`, usersRouter);
 app.use(`${PREFIX}auth`, authRouter);
 app.use(`${PREFIX}ongs`, validateJWT, ongsRouter);
 app.get(`${PREFIX}health`, (req, res) => {

@@ -17,15 +17,15 @@ module.exports = class PetService {
     try {
       const pets = await new PetDAO().read();
 
-            if(pets === undefined){
-                 return boom.notFound(pets);
-            }
-            return pets;
-        }catch(error){
-            logger.error(error);
-            return error
+        if(pets === undefined){
+              return boom.notFound(pets);
         }
-    }  
+        return pets;
+    }catch(error){
+        logger.error(error);
+        return error
+    }
+  }  
 
   async getById(id) {
     try {

@@ -5,12 +5,12 @@ const customInitFunctions = () => {
     $(window).scroll(function () {
       var scroll = $(window).scrollTop();
       var box = $(".header-text").height();
-      var header = $("header").height();
+      var header = $(".main-header").height();
 
       if (scroll >= box - header) {
-        $("header").addClass("background-header");
+        $(".main-header").addClass("background-header");
       } else {
-        $("header").removeClass("background-header");
+        $(".main-header").removeClass("background-header");
       }
     });
 

@@ -64,16 +64,22 @@ export class AdoptionPublishFormComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnInit(): void {
-    // this._httpService.httpGet('').toPromise().then((res) => console.log(res))
-  }
+  ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.urlImageSubscription.unsubscribe();
   }
 
   public saveForm(): void {
-    console.log(this.form);
+    const data = _.get(this.form, 'value');
+
+    this._httpService.httpPost('pet_adoption/pets', data).toPromise()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+
+    console.log(data);
   }
 
   public onImageSelectEmitter(img: File) {

@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-passport-logout": "^0.1.0",
     "express-session": "^1.17.2",
+    "express-validator": "^6.13.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
     "morgan": "^1.10.0",

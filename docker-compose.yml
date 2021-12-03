@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  backend:
+    image: pet-adoption-back
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4.0.4
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_DATABASE: 'admin'
+      MONGO_INITDB_ROOT_USERNAME: 'admin'
+      MONGO_INITDB_ROOT_PASSWORD: 'admin'
+    volumes:
+      - ./server/mongo-volume:/data/db

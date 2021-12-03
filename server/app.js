@@ -26,10 +26,10 @@ app.use(express.static('public/dist'));
 
 //routes
 
-app.use(`${PREFIX}pets`, validateJWT, petsRouter);
+app.use(`${PREFIX}pets`, petsRouter);
 app.use(`${PREFIX}users`, usersRouter);
 app.use(`${PREFIX}auth`, authRouter);
-app.use(`${PREFIX}ongs`, validateJWT, ongsRouter);
+app.use(`${PREFIX}ongs`, [validateJWT], ongsRouter);
 app.get('/admin/*', (req, res) => {
   res.sendFile(__dirname + '/src/public/dist/ng-adminpro/');
 });

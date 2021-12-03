@@ -9,7 +9,8 @@
     "hook-install": "precommit install",
     "hook-remove": "precommit remove",
     "precommit": "eslint 'src/**/*.js'",
-    "start": "NODE_ENV=production node app.js"
+    "start": "node app",
+    "test": "mocha tests/ong.test.js --exit"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",

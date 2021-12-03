@@ -1,5 +1,6 @@
 const { logger } = require('../utils/logger');
 const PetDAO = require('../models/DAO/pet');
+const boom = require('@hapi/boom');
 
 module.exports = class PetService {
   async register(pet) {
@@ -16,71 +17,75 @@ module.exports = class PetService {
     try {
       const pets = await new PetDAO().read();
 
-      if (pets === undefined) {
-        return '{Error: "No hay pets cargados."}';
-      }
-      return pets;
-    } catch (error) {
-      logger.error(error);
-      return error;
+        if(pets === undefined){
+              return boom.notFound(pets);
+        }
+        return pets;
+    }catch(error){
+        logger.error(error);
+        return error
     }
-  }
+  }  
 
   async getById(id) {
     try {
       const pets = await new PetDAO().readById(id);
 
-      if (pets === undefined) {
-        return '{error: "No hay pets con el id: "}' + id;
-      }
-      return pets;
-    } catch (error) {
-      logger.error(error);
-      return error;
+            if(pets === undefined){
+                return boom.notFound(pets);
+            }
+            return pets;
+        }catch(error){
+            logger.error(error);
+            return error
+        }        
     }
-  }
+  
 
   async getByName(name) {
     try {
       const pets = await new PetDAO().readByName(name);
 
-      if (pets === undefined) {
-        return '{error: "No hay pets cargados con el nombre: "}' + name;
-      }
-      return pets;
-    } catch (error) {
-      logger.error(error);
-      return error;
+            if(pets === undefined){
+               return boom.notFound(pets);
+            }
+            return pets;
+        }catch(error){
+            logger.error(error);
+            return error
+        }
     }
-  }
+  
 
   async getByGender(gender) {
     try {
       const pets = await new PetDAO().readByGender(gender);
 
-      if (pets === undefined) {
-        return '{error: "No hay pets cargados con el genero: "}';
-      }
-      return pets;
-    } catch (error) {
-      logger.error(error);
-      return error;
+            if(pets === undefined){
+               return boom.notFound(pets);
+            }
+            return pets;
+        }catch(error){
+            logger.error(error);
+            return error
+        }
     }
-  }
+  
 
   async getByRace(race) {
     try {
       const pets = await new PetDAO().readByRace(race);
 
-      if (pets === undefined) {
-        return '{error: "No hay pets cargados con la raza: "}';
-      }
-      return pets;
-    } catch (error) {
-      logger.error(error);
-      return error;
+            if(pets === undefined){
+               return boom.notFound(pets);
+            }
+            return pets;
+        }catch(error){
+            logger.error(error);
+            return error
+        }
     }
-  }
+  
 
   async deleteById(id) {
     try {

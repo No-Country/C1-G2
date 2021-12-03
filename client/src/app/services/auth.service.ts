@@ -5,6 +5,7 @@ import { Observable, of } from "rxjs";
 import { environment } from "src/environments/environment";
 
 import { AuthResponse, Usuario } from "../interfaces/auth.interface";
+import { HttpBaseService } from './http-base.service';
 
 @Injectable({
   providedIn: "root",
@@ -18,21 +19,16 @@ export class AuthService {
     return { ...this._usuario };
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private httpBaseService: HttpBaseService) {}
 
   registro(email: string, password: string) {
     const url = `${this.baseUrl}/auth/new`;
 
     const body = { email, password };
 
-    return this.http.post<AuthResponse>(url, body).pipe(
-      tap(({ user, token }) => {
-        if (user) localStorage.setItem("token", token!);
-      }),
-      map((resp) => resp.ok),
-      catchError((err) => of(err.error.msg))
-    );
+    return this.httpBaseService.httpPost(url, body);
   }
+
 
   login(email: string, password: string) {
     const url = `${this.baseUrl}/api/pet_adoption/auth/login`;

@@ -1,41 +1,40 @@
-<!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <nav class="main-nav">
-          <!-- ***** Logo Start ***** -->
-          <a href="index.html" class="logo">Animal App</a>
-          <!-- ***** Logo End ***** -->
-          <!-- ***** Menu Start ***** -->
+          <a 
+            href="/" 
+            class="logo">
+            Animal App
+          </a>
           <ul class="nav">
-            <li class="scroll-to-section">
-              <a href="#top" class="active">Home</a>
-            </li>
-            <li class="scroll-to-section"><a href="#apply">Nosotros</a></li>
+            <li class="scroll-to-section"><a href="home#top" class="active">Home</a></li>
+            <li class="scroll-to-section"><a href="home#apply">Nosotros</a></li>
             <li class="has-sub">
-              <a href="javascript:void(0)">Buscador de mascotas</a>
+              <a href="javascript:void(0)">Mascotas</a>
               <ul class="sub-menu">
-                <li><a href="meetings.html">Encontradas</a></li>
-                <li><a href="meeting-details.html">Perdidas</a></li>
-                <li><a href="meeting-details.html">Registrar</a></li>
+                <li><a href="meetings.html">Adopción</a></li>
+                <li><a href="meeting-details.html">Perdidos</a></li>
+                <li><a href="meeting-details.html">Encontrados</a></li>
               </ul>
             </li>
-            <li class="scroll-to-section">
-              <a href="#contact">Contactanos</a>
-            </li>
-            <li class="nav-item">
-            <a routerLink="/login/sign-in">Logueate</a>
-            </li>
-            <li class="nav-item">
-            <a routerLink="/login/sign-up">Registrate</a>
-            </li>
-          </ul>
-
-          <!-- ***** Menu End ***** -->
+            <li class="scroll-to-section"><a href="home#courses">Contacto</a></li> 
+            <li   
+              *ngIf="auth"
+              class="scroll-to-section">
+              <a 
+                class="cursor-pointer"  
+                (click)="onNavigateToDashboard()">
+                Ir Panel</a>
+              </li> 
+            <li class="scroll-to-section"><a class="cursor-pointer" (click)="onNavigateToSignIn()">Iniciar sesión</a></li> 
+          </ul>        
+          <a class='menu-trigger'>
+            <span>Menu</span>
+          </a>
         </nav>
       </div>
     </div>
   </div>
 </header>
-<!-- ***** Header Area End ***** -->

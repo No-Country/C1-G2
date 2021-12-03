@@ -38,13 +38,12 @@ export class SignInComponent implements OnInit {
   login() {
     const { username, password } = this.form.value;
 
-    this.authService.login(username, password).subscribe((ok) => {
-      console.log("OK", ok);
-      // if (ok === true) {
-      //   this.router.navigateByUrl("/dashboard");
-      // } else {
-      //   Swal.fire("Error", ok, "error");
-      // }
+    this.authService.login(username, password).subscribe((resp) => {
+      if (resp === true) {
+        this.router.navigateByUrl("/admin");
+      } else {
+        Swal.fire("Error", resp, "error");
+      }
     });
   }
 }

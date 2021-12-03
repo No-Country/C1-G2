@@ -20,16 +20,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  registro(email: string, password: string) {
-    const url = `${this.baseUrl}/auth/new`;
+  register(email: string, password: string) {
+    const url = `${this.baseUrl}/api/pet_adoption/users`;
 
     const body = { email, password };
 
     return this.http.post<AuthResponse>(url, body).pipe(
-      tap(({ user, token }) => {
-        if (user) localStorage.setItem("token", token!);
+      tap((resp) => {
+        if (resp.user) localStorage.setItem("token", resp.token!);
       }),
-      map((resp) => resp.ok),
       catchError((err) => of(err.error.msg))
     );
   }
@@ -37,18 +36,15 @@ export class AuthService {
   login(email: string, password: string) {
     const url = `${this.baseUrl}/api/pet_adoption/auth/login`;
 
-    console.log("URL:", url);
-
     const body = { email, password };
 
     return this.http.post<AuthResponse>(url, body).pipe(
       tap((resp) => {
-        // if (resp.user) localStorage.setItem("token", resp.token!);
-        console.log("RESPUESTA:", resp);
-      })
-      // map((resp) => resp.ok),
+        if (resp.user) localStorage.setItem("token", resp.token!);
+      }),
+      map((resp) => resp.ok),
 
-      // catchError((err) => of(err.error.msg))
+      catchError((err) => of(err.error.msg))
     );
   }
 

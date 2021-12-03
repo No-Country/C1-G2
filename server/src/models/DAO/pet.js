@@ -16,7 +16,8 @@ module.exports = class PetDAO {
 
     read(){
         try{
-            return pets.find({});
+            return pets.find({},{is_authorized: 0, userid: 0});
+           
         }catch(error){
             logger.error(error);
             return error;
@@ -25,7 +26,7 @@ module.exports = class PetDAO {
 
     readById(id){        
         try{  
-            return pets.findById({ _id: id });
+            return pets.findById({ _id: id },{is_authorized: 0, userid: 0});
         }catch(error){
             logger.error(error);
             return error;
@@ -34,7 +35,7 @@ module.exports = class PetDAO {
 
     readByName(name){
         try{           
-            return pets.find({ petname: name}).exec();
+            return pets.find({ petname: name},{is_authorized: 0, userid: 0}).exec();
         }catch(error){
             logger.error(error);
             return error;
@@ -43,7 +44,7 @@ module.exports = class PetDAO {
 
     readByGender(gender){
         try{
-            return pets.find({ gender: gender}).exec();
+            return pets.find({ gender: gender},{is_authorized: 0, userid: 0}).exec();
            
         }catch(error){
             logger.error(error);
@@ -53,15 +54,13 @@ module.exports = class PetDAO {
 
     readByRace(race){
         try{           
-            return pets.find({ race: race }).exec();           
+            return pets.find({ race: race },{is_authorized: 0, userid: 0}).exec();           
         }catch(error){
             logger.error(error);
             return error;
         }
     }
 
-
-    //Ver UPDATE
 
     delete(id){
         try{

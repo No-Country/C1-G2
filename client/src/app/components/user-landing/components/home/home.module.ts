@@ -9,6 +9,7 @@ import { CarouselModule } from "../../../../shared/carousel/carousel.module";
 import { FilterModule } from "../filter/filter.module";
 import { LoadingModule } from "src/app/shared/loading/loading.module";
 import { NavbarModule } from "../navbar/navbar.module";
+import { CardModule } from "../card/card.module";
 
 const routes: Routes = [
   { path: "", component: HomeComponent }
@@ -23,7 +24,8 @@ const routes: Routes = [
     CommonModule,
     LoadingModule,
     RouterModule.forChild(routes),
-    FilterModule
+    FilterModule,
+    CardModule
   ],
 })
 export class HomeModule { }

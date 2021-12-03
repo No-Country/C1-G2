@@ -1,12 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from 'src/app/components/user-landing/components/card/card.component';
+import { RouterModule, Routes } from '@angular/router';
+
+// Components
+import { CardDetailComponent } from '../card-detail/card-detail.component';
+
+const APP_ROUTES: Routes = [
+  { path: 'pet/details/:id', component: CardDetailComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' }
+];
+
+
+
 @NgModule({
-  declarations: [CardComponent],
+  declarations: [CardDetailComponent],
   imports: [
     CommonModule,
-],
-exports: [CardComponent]
+    RouterModule.forChild(APP_ROUTES)
+]
+
 
 })
 export class CardModule { }

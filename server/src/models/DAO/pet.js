@@ -16,8 +16,8 @@ module.exports = class PetDAO {
 
     read(){
         try{
-            // return pets.find({},{is_authorized: 0, userid: 0, petname: 1,image: 1, race: 1, species: 1, color: 1, gender: 1, description: 1, age: 1, publicationDate: 1, category: 1, is_castrated: 1});
-             return pets.find({});
+            return pets.find({},{is_authorized: 0, userid: 0});
+           
         }catch(error){
             logger.error(error);
             return error;

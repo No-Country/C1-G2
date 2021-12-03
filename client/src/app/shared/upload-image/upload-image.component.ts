@@ -1,17 +1,18 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: "app-upload-image",
   templateUrl: "./upload-image.component.html",
   styleUrls: ["./upload-image.component.css"],
 })
-export class UploadImageComponent {
+export class UploadImageComponent implements OnInit {
 
+  @Input() preview: string = '';
   @Output() imageClickedEmitter: EventEmitter<Object> = new EventEmitter();
 
-  public preview: string = "";
-
   constructor() { }
+
+  ngOnInit(): void { }
 
   public capturarArchivo(event: any): void {
     const archivo = event.target.files[0];

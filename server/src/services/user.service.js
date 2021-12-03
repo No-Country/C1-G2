@@ -82,20 +82,19 @@ module.exports = class UserService {
   async checkLogin(email, password) {
     try {
       const user = await new UserDAO().getByEmail(email);
-      if (user === undefined) {
+      if (!user) {
         return boom.notFound(user);
       }
-      const isValid = bcrypt.compareSync(password, user[0].password);
+      const isValid = bcrypt.compareSync(password, user.password);
       if (!isValid) {
         return boom.unauthorized(isValid);
       }
       return {
-        id: user[0]._id,
-        username: user[0].username,
-        role: user[0].role,
+        id: user._id,
+        username: user.username,
+        role: user.role,
       };
     } catch (err) {
-      logger.error(err);
       return err;
     }
   }

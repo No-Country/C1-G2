@@ -10,10 +10,7 @@ export const Approutes: Routes = [
     path: 'admin',
     component: FullComponent,
     children: [
-      { path: '', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule), 
-        canActivate: [ValidateTokenGuard],
-        canLoad: [ValidateTokenGuard]
-      },
+      { path: '', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule), canActivate: [ValidateTokenGuard] },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ]
   },

@@ -20,6 +20,7 @@ const APP_ROUTES: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "adoption-table", component: AdoptionTableComponent },
   { path: "adoption-publish", component: AdoptionPublishFormComponent },
+  { path: "adoption-publish/edit/:id", component: AdoptionPublishFormComponent },
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
   { path: "**", redirectTo: "dashboard" },
 ];

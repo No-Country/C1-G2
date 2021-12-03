@@ -17,80 +17,76 @@ module.exports = class PetService {
     try {
       const pets = await new PetDAO().read();
 
-        if(pets === undefined){
-              return boom.notFound(pets);
-        }
-        return pets;
-    }catch(error){
-        logger.error(error);
-        return error
+      if (pets === undefined) {
+        return boom.notFound(pets);
+      }
+      return pets;
+    } catch (error) {
+      logger.error(error);
+      return error;
     }
-  }  
+  }
 
   async getById(id) {
     try {
       const pets = await new PetDAO().readById(id);
 
-            if(pets === undefined){
-                return boom.notFound(pets);
-            }
-            return pets;
-        }catch(error){
-            logger.error(error);
-            return error
-        }        
+      if (pets === undefined) {
+        return boom.notFound(pets);
+      }
+      return pets;
+    } catch (error) {
+      logger.error(error);
+      return error;
     }
-  
+  }
 
   async getByName(name) {
     try {
       const pets = await new PetDAO().readByName(name);
 
-            if(pets === undefined){
-               return boom.notFound(pets);
-            }
-            return pets;
-        }catch(error){
-            logger.error(error);
-            return error
-        }
+      if (pets === undefined) {
+        return boom.notFound(pets);
+      }
+      return pets;
+    } catch (error) {
+      logger.error(error);
+      return error;
     }
-  
+  }
 
   async getByGender(gender) {
     try {
       const pets = await new PetDAO().readByGender(gender);
 
-            if(pets === undefined){
-               return boom.notFound(pets);
-            }
-            return pets;
-        }catch(error){
-            logger.error(error);
-            return error
-        }
+      if (pets === undefined) {
+        return boom.notFound(pets);
+      }
+      return pets;
+    } catch (error) {
+      logger.error(error);
+      return error;
     }
-  
+  }
 
   async getByRace(race) {
     try {
       const pets = await new PetDAO().readByRace(race);
 
-            if(pets === undefined){
-               return boom.notFound(pets);
-            }
-            return pets;
-        }catch(error){
-            logger.error(error);
-            return error
-        }
+      if (pets === undefined) {
+        return boom.notFound(pets);
+      }
+      return pets;
+    } catch (error) {
+      logger.error(error);
+      return error;
     }
-  
+  }
 
   async deleteById(id) {
     try {
       const pets = new PetDAO();
-      return pets.delete(id);
+      return pets.deletePet(id);
     } catch (error) {
       logger.error('[falla al eliminar]', error);
       return error;

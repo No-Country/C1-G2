@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import * as moment from 'moment';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -6,6 +7,8 @@ import { Subscription } from 'rxjs';
 // App Services
 import { FirebaseStorageUploadService } from 'src/app/services/firebase-storage-upload.service';
 import { HttpBaseService } from 'src/app/services/http-base.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-adoption-publish-form',
@@ -20,7 +23,9 @@ export class AdoptionPublishFormComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private _httpService: HttpBaseService,
-    private _uploadService: FirebaseStorageUploadService
+    private _uploadService: FirebaseStorageUploadService,
+    private _authService: AuthService,
+    private route: ActivatedRoute
   ) {
     this.form = this.fb.group({
       petname: new FormControl(null, [
@@ -61,25 +66,70 @@ export class AdoptionPublishFormComponent implements OnInit, OnDestroy {
       if (!_.isEmpty(url)) {
         this.form.controls.image.setValue(url);
       }
-    })
+    });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getPetDetails();
+  }
 
   ngOnDestroy(): void {
     this.urlImageSubscription.unsubscribe();
   }
 
-  public saveForm(): void {
-    const data = _.get(this.form, 'value');
+  private getPetDetails(): void {
+    this._httpService.httpGet(`pet_adoption/pets/byid/${_.get(this.route.params, '_value.id')}`).toPromise()
+      .then((resp) => {
+        console.log(resp);
 
-    this._httpService.httpPost('pet_adoption/pets', data).toPromise()
-      .then((res) => {
-        console.log(res);
+        this.form.patchValue({
+          petname: resp.petname,
+          species: resp.species,
+          race: resp.race,
+          gender: resp.gender,
+          description: resp.description,
+          age: resp.age,
+          category: resp.category,
+          is_castrated: resp.is_castrated === true ? 'true' : 'false',
+          image: resp.image,
+        });
       })
       .catch((err) => console.log(err));
+  }
 
-    console.log(data);
+  public saveForm(): void {
+    // Setting manually the is_castrated value cause the bootstrap radio emits a string and not a boolean
+    const formData = _.cloneDeep(this.form.value);
+    const { is_castrated } = formData;
+    const currentUser = this._authService.usuario;
+    delete formData.is_castrated;
+
+    // Edit Mode
+    if (_.get(this.route.params, '_value.id', undefined)) {
+      this._httpService.httpPut(
+        `pet_adoption/pets/update/${_.get(this.route.params, '_value.id')}`,
+        { ...formData, is_castrated: is_castrated === 'true' ? true : false }
+      ).toPromise()
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      // Creation Mode
+      this._httpService.httpPost(
+        'pet_adoption/pets',
+        {
+          ...formData, is_castrated: is_castrated === 'true' ? true : false,
+          userid: currentUser.uid,
+          publicationDate: moment(),
+          category: 'ADOPTION'
+        }
+      ).toPromise()
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
   public onImageSelectEmitter(img: File) {

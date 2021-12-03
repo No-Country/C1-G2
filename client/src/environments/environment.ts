@@ -13,7 +13,7 @@ export const environment = {
     appId: "1:1027640219668:web:456114cc0d98c29dccaf01",
     measurementId: "G-DW41KPY839"
   },
-  baseUrl: "http://localhost:8080"
+  baseUrl: "http://localhost:8080/api/"
 };
 
 // export const environment = {
@@ -27,7 +27,7 @@ export const environment = {
 //     appId: "1:1027640219668:web:456114cc0d98c29dccaf01",
 //     measurementId: "G-DW41KPY839"
 //   },
-//   baseUrl: "https://ncg2-animal-project.herokuapp.com/api"
+//   baseUrl: "https://ncg2-animal-project.herokuapp.com/api/"
 // };
 
 /*

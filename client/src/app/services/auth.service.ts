@@ -20,7 +20,7 @@ export class AuthService {
   constructor(private http: HttpClient, private httpBaseService: HttpBaseService) {}
 
   register(email: string, password: string) {
-    const url = `api/pet_adoption/users`;
+    const url = `pet_adoption/users`;
 
     const body = { email, password };
 
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const url = `api/pet_adoption/auth/login`;
+    const url = `pet_adoption/auth/login`;
 
     const body = { email, password };
 
@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   validarToken(): Observable<boolean> {
-    const url = `${environment.baseUrl}/api/pet_adoption/auth/renew`;
+    const url = `${environment.baseUrl}pet_adoption/auth/renew`;
 
     // const headers = new HttpHeaders().set(
     //   "x-auth",

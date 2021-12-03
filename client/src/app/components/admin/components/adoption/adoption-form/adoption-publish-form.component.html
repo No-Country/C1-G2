@@ -108,7 +108,7 @@
         class="form-check-input"
         type="radio"
         name="is_castrated"
-        value="TRUE"
+        value="true"
         formControlName="is_castrated"
         id="is_castrated"/>
       <label class="form-check-label" for="is_castrated"> Si </label>
@@ -118,7 +118,7 @@
         class="form-check-input"
         type="radio"
         name="is_castrated"
-        value="FALSE"
+        value="false"
         formControlName="is_castrated"
         id="is_castrated"/>
       <label 
@@ -127,7 +127,10 @@
         No 
       </label>
     </div>
-    <app-upload-image (imageClickedEmitter)="onImageSelectEmitter($event)"></app-upload-image>
+    <app-upload-image 
+      [preview]="form.controls.image.value"
+      (imageClickedEmitter)="onImageSelectEmitter($event)">
+    </app-upload-image>
   </div>
   <!-- Save button -->
   <div class="send-button-container">

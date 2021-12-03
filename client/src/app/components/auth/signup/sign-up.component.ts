@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
+
+import Swal from "sweetalert2";
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +17,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.form = this.fb.group({
       username: new FormControl(null, [
@@ -35,11 +40,15 @@ export class SignUpComponent implements OnInit {
     console.log(this.form);
   }
 
-  register(){
-
+  register(): void {
     const { username, password } = this.form.value;
 
-    this.authService.registro(username, password).toPromise().then((resp) => console.log(resp))
-
+    this.authService.register(username, password).then( (resp) => {
+      if(resp){
+        this.router.navigateByUrl('admin');
+      }
+    }).catch( ({error}) => {
+      Swal.fire("Error", error.msg, "error");
+    })
   }
 }

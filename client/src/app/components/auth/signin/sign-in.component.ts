@@ -35,16 +35,15 @@ export class SignInComponent implements OnInit {
     console.log(this.form);
   }
 
-  login() {
+  login(): void {
     const { username, password } = this.form.value;
 
-    this.authService.login(username, password).subscribe((ok) => {
-      console.log("OK", ok);
-      // if (ok === true) {
-      //   this.router.navigateByUrl("/dashboard");
-      // } else {
-      //   Swal.fire("Error", ok, "error");
-      // }
-    });
+    this.authService.login(username, password).then( (resp) => {
+      if(resp){
+        this.router.navigateByUrl('admin');
+      }
+    }).catch( ({error}) => {
+      Swal.fire("Error", error.msg, "error");
+    })
   }
 }

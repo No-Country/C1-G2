@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { finalize } from 'rxjs/operators';
 
 // Angular firestore
 import { AngularFireStorage } from '@angular/fire/compat/storage';

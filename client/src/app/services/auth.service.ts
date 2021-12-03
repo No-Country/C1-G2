@@ -5,6 +5,7 @@ import { Observable, of } from "rxjs";
 
 import { AuthResponse, Usuario } from "../interfaces/auth.interface";
 import { HttpBaseService } from './http-base.service';
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -18,36 +19,45 @@ export class AuthService {
 
   constructor(private http: HttpClient, private httpBaseService: HttpBaseService) {}
 
-  registro(email: string, password: string) {
+  register(email: string, password: string) {
+    const url = `api/pet_adoption/users`;
+
     const body = { email, password };
 
-    return this.httpBaseService.httpPost('auth/new', body);
+    return this.httpBaseService.httpPost(url, body).pipe(
+      map((resp: any) => {
+        if(resp.ok){
+          localStorage.setItem('token', resp.token);
+          return resp.ok;
+        }
+      })
+    ).toPromise();
   }
 
-
   login(email: string, password: string) {
+    const url = `api/pet_adoption/auth/login`;
+
     const body = { email, password };
 
-    return this.http.post<AuthResponse>('pet_adoption/auth/login', body).pipe(
-      tap((resp) => {
-        // if (resp.user) localStorage.setItem("token", resp.token!);
-        console.log("RESPUESTA:", resp);
+    return this.httpBaseService.httpPost(url, body).pipe(
+      map((resp: any) => {
+        if(resp.ok){
+          localStorage.setItem('token', resp.token);
+          return resp.ok;
+        }
       })
-      // map((resp) => resp.ok),
-
-      // catchError((err) => of(err.error.msg))
-    );
+    ).toPromise();
   }
 
   validarToken(): Observable<boolean> {
-    const url = `auth/renew`;
+    const url = `${environment.baseUrl}/api/pet_adoption/auth/renew`;
 
-    const headers = new HttpHeaders().set(
-      "x-token",
-      localStorage.getItem("token") || ""
-    );
+    // const headers = new HttpHeaders().set(
+    //   "x-auth",
+    //   localStorage.getItem("token") || ""
+    // );
 
-    return this.http.get<AuthResponse>(url, { headers }).pipe(
+    return this.http.get<AuthResponse>(url).pipe(
       map((resp) => {
         localStorage.setItem("token", resp.token!);
         this._usuario = {

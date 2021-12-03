@@ -83,15 +83,15 @@ export class AdoptionPublishFormComponent implements OnInit, OnDestroy {
         console.log(resp);
 
         this.form.patchValue({
-          petname: resp.petname,
-          species: resp.species,
-          race: resp.race,
-          gender: resp.gender,
-          description: resp.description,
-          age: resp.age,
-          category: resp.category,
-          is_castrated: resp.is_castrated === true ? 'true' : 'false',
-          image: resp.image,
+          petname: resp.pets.petname,
+          species: resp.pets.species,
+          race: resp.pets.race,
+          gender: resp.pets.gender,
+          description: resp.pets.description,
+          age: resp.pets.age,
+          category: resp.pets.category,
+          is_castrated: resp.pets.is_castrated === true ? 'true' : 'false',
+          image: resp.pets.image,
         });
       })
       .catch((err) => console.log(err));

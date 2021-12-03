@@ -20,15 +20,14 @@ export class AdoptionTableComponent implements OnInit {
 
   ngOnInit(): void {
     this._httpService.httpGet('pet_adoption/pets/list').toPromise()
-      .then((resp: Array<any>) => {
-        this.adoptionList = resp;
+      .then((resp: any) => {
+        this.adoptionList = resp.pets;
         console.log(this.adoptionList);
       })
       .catch((err) => console.log(err));
   }
 
   public onDeletePet(id: string): void {
-    console.log(id);
     this._httpService.httpDelete('pet_adoption/pets/delete', { _id: id }).toPromise()
     .then((resp) => {
       console.log(resp);

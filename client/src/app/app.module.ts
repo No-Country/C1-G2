@@ -7,7 +7,7 @@ import {
 } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -27,6 +27,7 @@ import { Approutes } from './app-routing.module';
 
 // Environment
 import { environment } from 'src/environments/environment';
+import { AuthInterceptor } from './components/auth/auth.interceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -62,6 +63,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true // Dont override existing interceptors. Add this as a new one.
     }
   ],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Components
 import { FullComponent } from './components/admin/full/full.component';
+import { ValidateTokenGuard } from './guards/validate-token.guard';
 
 export const Approutes: Routes = [
   // ADMIN Modules
@@ -9,7 +10,7 @@ export const Approutes: Routes = [
     path: 'admin',
     component: FullComponent,
     children: [
-      { path: '', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule) },
+      { path: '', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule), canActivate: [ValidateTokenGuard] },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ]
   },

@@ -10,6 +10,12 @@ exports.login = async (req, res) => {
     const user = await User.checkLogin(email, password);
     const token = await generateJWT(user.id);
 
+    if (user.isBoom)
+      return res.status(404).json({
+        ok: false,
+        msg: 'Wrong email or password',
+      });
+
     res.status(200).json({
       ok: true,
       user,

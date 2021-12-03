@@ -44,3 +44,5 @@ getConnection()
     });
   })
   .catch(logger.error);
+
+module.exports = app;

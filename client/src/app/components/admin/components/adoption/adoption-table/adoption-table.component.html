@@ -10,15 +10,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pet of adoption">
-      <td>{{ pet.petname }}</td>
-      <td>{{ pet.publicationDate }}</td>
-      <td>{{ pet.species }}</td>
-      <td>{{ pet.category }}</td>
-      <td>{{ pet.is_authorized }}</td>
+    <tr *ngFor="let case of adoptionList">
+      <td>{{ case.petname }}</td>
+      <td>{{ case.publicationDate }}</td>
+      <td>{{ case.species }}</td>
+      <td>{{ case.category }}</td>
+      <td>{{ case.is_authorized }}</td>
       <td>
-        <i class="fas fa-edit text-primary"></i>
-        <i class="fas fa-trash text-danger"></i>
+        <i 
+          class="fas fa-edit text-primary mr-2" 
+          (click)="onEditPet(case._id)">
+        </i>
+        <i 
+          class="fas fa-trash text-danger"
+          (click)="onDeletePet(case._id)">
+        </i>
       </td>
     </tr>
   </tbody>

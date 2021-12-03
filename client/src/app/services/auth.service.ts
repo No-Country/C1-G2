@@ -21,38 +21,41 @@ export class AuthService {
 
   constructor(private http: HttpClient, private httpBaseService: HttpBaseService) {}
 
-  registro(email: string, password: string) {
-    const url = `${this.baseUrl}/auth/new`;
+  register(email: string, password: string) {
+    const url = `api/pet_adoption/users`;
 
     const body = { email, password };
 
-    return this.httpBaseService.httpPost(url, body);
+    return this.httpBaseService.httpPost(url, body).pipe(
+      map((resp: any) => {
+        if(resp.ok){
+          localStorage.setItem('token', resp.token);
+          return resp.ok;
+        }
+      })
+    ).toPromise();
   }
 
-
   login(email: string, password: string) {
-    const url = `${this.baseUrl}/api/pet_adoption/auth/login`;
-
-    console.log("URL:", url);
+    const url = `api/pet_adoption/auth/login`;
 
     const body = { email, password };
 
-    return this.http.post<AuthResponse>(url, body).pipe(
-      tap((resp) => {
-        // if (resp.user) localStorage.setItem("token", resp.token!);
-        console.log("RESPUESTA:", resp);
+    return this.httpBaseService.httpPost(url, body).pipe(
+      map((resp: any) => {
+        if(resp.ok){
+          localStorage.setItem('token', resp.token);
+          return resp.ok;
+        }
       })
-      // map((resp) => resp.ok),
-
-      // catchError((err) => of(err.error.msg))
-    );
+    ).toPromise();
   }
 
   validarToken(): Observable<boolean> {
-    const url = `${this.baseUrl}/auth/renew`;
+    const url = `${this.baseUrl}/api/pet_adoption/auth/renew`;
 
     const headers = new HttpHeaders().set(
-      "x-token",
+      "x-auth",
       localStorage.getItem("token") || ""
     );
 

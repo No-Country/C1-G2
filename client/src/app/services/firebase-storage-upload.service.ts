@@ -29,11 +29,12 @@ export class FirebaseStorageUploadService {
       console.log(progress);
     });
 
-    uploadTask.snapshotChanges().pipe(finalize(() => {
-      storageRef.getDownloadURL().subscribe(resp => {
-        this.$urlString.next(resp);
-        this.$urlString.complete();
+    uploadTask.snapshotChanges().toPromise()
+      .then(() => {
+        storageRef.getDownloadURL().subscribe(resp => {
+          this.$urlString.next(resp);
+          this.$urlString.complete();
+        });
       });
-    })).subscribe();
   }
 }

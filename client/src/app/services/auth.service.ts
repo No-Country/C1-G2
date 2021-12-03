@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, map, tap } from "rxjs/operators";
 import { Observable, of } from "rxjs";
-import { environment } from "src/environments/environment";
 
 import { AuthResponse, Usuario } from "../interfaces/auth.interface";
 import { HttpBaseService } from './http-base.service';
@@ -11,8 +10,6 @@ import { HttpBaseService } from './http-base.service';
   providedIn: "root",
 })
 export class AuthService {
-  private baseUrl: string = environment.baseUrl;
-
   private _usuario!: Usuario;
 
   get usuario() {
@@ -22,22 +19,16 @@ export class AuthService {
   constructor(private http: HttpClient, private httpBaseService: HttpBaseService) {}
 
   registro(email: string, password: string) {
-    const url = `${this.baseUrl}/auth/new`;
-
     const body = { email, password };
 
-    return this.httpBaseService.httpPost(url, body);
+    return this.httpBaseService.httpPost('auth/new', body);
   }
 
 
   login(email: string, password: string) {
-    const url = `${this.baseUrl}/api/pet_adoption/auth/login`;
-
-    console.log("URL:", url);
-
     const body = { email, password };
 
-    return this.http.post<AuthResponse>(url, body).pipe(
+    return this.http.post<AuthResponse>('pet_adoption/auth/login', body).pipe(
       tap((resp) => {
         // if (resp.user) localStorage.setItem("token", resp.token!);
         console.log("RESPUESTA:", resp);
@@ -49,7 +40,7 @@ export class AuthService {
   }
 
   validarToken(): Observable<boolean> {
-    const url = `${this.baseUrl}/auth/renew`;
+    const url = `auth/renew`;
 
     const headers = new HttpHeaders().set(
       "x-token",

@@ -2,29 +2,43 @@ const { logger } = require('../utils/logger');
 const bcrypt = require('bcryptjs');
 const boom = require('@hapi/boom');
 const UserService = require('../services/user.service');
+const generateJWT = require('../helpers/generateJWT');
 const User = new UserService();
 
 exports.create = async (req, res) => {
   try {
-    const { username, email, password, image, phone } = await req.body;
+    const { email, password } = await req.body;
     const hashedPassword = bcrypt.hashSync(
       password,
       bcrypt.genSaltSync(10),
       null
     );
     const newUser = {
-      username: username,
       email: email,
       password: hashedPassword,
-      image: image,
-      phone: phone,
       role: 'read',
     };
+
+    const checkExist = await User.getEmail(email);
+
+    if (checkExist)
+      return res.status(500).json({
+        ok: false,
+        msg: 'User already registered',
+      });
+
     const result = await User.register(newUser);
+
     if (result.level === 'error') {
       res.status(500).json({ message: 'User not created' });
     } else {
-      res.status(200).json({ message: 'User created' });
+      const token = await generateJWT(result._id);
+
+      res.status(200).json({
+        ok: true,
+        user: newUser,
+        token,
+      });
     }
   } catch (error) {
     logger.error(error);

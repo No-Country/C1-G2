@@ -14,7 +14,7 @@ const PetSchema = new Schema(
       // required: true
     },
     userid: {
-      type: Number,
+      type: String,
       //required: true
     },
     race: {

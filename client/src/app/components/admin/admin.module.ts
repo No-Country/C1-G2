@@ -21,7 +21,11 @@ const APP_ROUTES: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "adoption-table", component: AdoptionTableComponent },
   { path: "adoption-publish", component: AdoptionPublishFormComponent },
+<<<<<<< HEAD
   { path: "found-table", component: FoundTableComponent },
+=======
+  { path: "adoption-publish/edit/:id", component: AdoptionPublishFormComponent },
+>>>>>>> develop
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
   { path: "**", redirectTo: "dashboard" },
 ];

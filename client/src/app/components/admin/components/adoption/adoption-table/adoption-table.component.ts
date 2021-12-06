@@ -19,7 +19,7 @@ export class AdoptionTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._httpService.httpGet('pet_adoption/pets/list').toPromise()
+    this._httpService.httpGet('pets/list').toPromise()
       .then((resp: any) => {
         this.adoptionList = resp.pets;
         console.log(this.adoptionList);
@@ -28,7 +28,7 @@ export class AdoptionTableComponent implements OnInit {
   }
 
   public onDeletePet(id: string): void {
-    this._httpService.httpDelete('pet_adoption/pets/delete', { _id: id }).toPromise()
+    this._httpService.httpDelete('pets/delete', { _id: id }).toPromise()
     .then((resp) => {
       console.log(resp);
     })

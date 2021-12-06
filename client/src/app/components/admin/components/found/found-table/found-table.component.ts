@@ -17,7 +17,7 @@ export class FoundTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._httpService.httpGet('pet_adoption/pets/found').toPromise()
+    this._httpService.httpGet('pets/found').toPromise()
       .then((resp: any) => {
         this.foundList = resp.pets;
         console.log(this.foundList);
@@ -26,7 +26,7 @@ export class FoundTableComponent implements OnInit {
   }
 
   public onDeletePet(id: string): void {
-    this._httpService.httpDelete('pet_adoption/pets/delete', { _id: id }).toPromise()
+    this._httpService.httpDelete('pets/delete', { _id: id }).toPromise()
     .then((resp) => {
       console.log(resp);
     })

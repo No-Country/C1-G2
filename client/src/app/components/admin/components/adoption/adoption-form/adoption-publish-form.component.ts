@@ -78,7 +78,7 @@ export class AdoptionPublishFormComponent implements OnInit, OnDestroy {
   }
 
   private getPetDetails(): void {
-    this._httpService.httpGet(`pet_adoption/pets/byid/${_.get(this.route.params, '_value.id')}`).toPromise()
+    this._httpService.httpGet(`pets/byid/${_.get(this.route.params, '_value.id')}`).toPromise()
       .then((resp) => {
         console.log(resp);
 
@@ -107,7 +107,7 @@ export class AdoptionPublishFormComponent implements OnInit, OnDestroy {
     // Edit Mode
     if (_.get(this.route.params, '_value.id', undefined)) {
       this._httpService.httpPut(
-        `pet_adoption/pets/update/${_.get(this.route.params, '_value.id')}`,
+        `pets/update/${_.get(this.route.params, '_value.id')}`,
         { ...formData, is_castrated: is_castrated === 'true' ? true : false }
       ).toPromise()
         .then((res) => {
@@ -117,7 +117,7 @@ export class AdoptionPublishFormComponent implements OnInit, OnDestroy {
     } else {
       // Creation Mode
       this._httpService.httpPost(
-        'pet_adoption/pets',
+        'pets',
         {
           ...formData, is_castrated: is_castrated === 'true' ? true : false,
           userid: currentUser.uid,

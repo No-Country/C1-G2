@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { finalize } from 'rxjs/operators';
 
 // Angular firestore
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -29,11 +28,12 @@ export class FirebaseStorageUploadService {
       console.log(progress);
     });
 
-    uploadTask.snapshotChanges().pipe(finalize(() => {
-      storageRef.getDownloadURL().subscribe(resp => {
-        this.$urlString.next(resp);
-        this.$urlString.complete();
+    uploadTask.snapshotChanges().toPromise()
+      .then(() => {
+        storageRef.getDownloadURL().subscribe(resp => {
+          this.$urlString.next(resp);
+          this.$urlString.complete();
+        });
       });
-    })).subscribe();
   }
 }

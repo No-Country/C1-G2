@@ -10,15 +10,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pet of found">
+    <tr *ngFor="let pet of foundList">
       <td>{{ pet.petname }}</td>
       <td>{{ pet.publicationDate }}</td>
       <td>{{ pet.species }}</td>
       <td>{{ pet.category }}</td>
       <td>{{ pet.is_authorized }}</td>
       <td>
-        <i class="fas fa-edit text-primary"></i>
-        <i class="fas fa-trash text-danger"></i>
+        <i
+          class="fas fa-edit text-primary mr-2"
+          (click)="onEditPet(pet._id)">
+        </i>
+        <i
+          class="fas fa-trash text-danger"
+          (click)="onDeletePet(pet._id)">
+        </i>
       </td>
     </tr>
   </tbody>

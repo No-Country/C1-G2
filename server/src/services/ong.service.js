@@ -17,7 +17,7 @@ module.exports = class OngService {
         try{
             const ongs = await new OngDAO().read();
 
-            if(ongs == undefined){
+            if(ongs === undefined){
                 return('{Error, no hay ongs cargadas}');
             }
             return ongs;
@@ -31,7 +31,7 @@ module.exports = class OngService {
         try{
             const ongs = await new OngDAO().readById(id);
             
-            if(ongs == undefined) {
+            if(ongs === undefined) {
                 return boom.notFound(ongs);
             }
             return ongs;
@@ -47,7 +47,7 @@ module.exports = class OngService {
         try{
             const ongs = await new OngDAO().readByNit(nit);
             
-            if(ongs == undefined) {
+            if(ongs === undefined) {
                  return boom.notFound(ongs);
             }
             return ongs;
@@ -61,7 +61,7 @@ module.exports = class OngService {
         try{
             const ongs = await new OngDAO().readByName(name);
             
-            if(ongs == undefined) {
+            if(ongs === undefined) {
                  return boom.notFound(ongs);
             }
             return ongs;

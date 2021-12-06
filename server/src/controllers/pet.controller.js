@@ -60,7 +60,6 @@ exports.create = async (req, res) => {
     } else {
       res.status(200).json({ message: 'Pet created' });
     }
-
   } catch (error) {
     logger.error(error);
     return res
@@ -73,7 +72,7 @@ exports.read = async (req, res) => {
   try {
     const Pet = new PetService();
     const pets = await Pet.getAll();
-    return res.status(200).json( { pets } );
+    return res.status(200).json({ pets });
   } catch (error) {
     logger.error(error);
     return res
@@ -117,12 +116,11 @@ exports.readByName = async (req, res) => {
     const Pet = new PetService();
     const pets = await Pet.getByName(petname);
 
-    if (pets === null  || pets.length == 0)  {
+    if (pets === null || pets.length == 0) {
       res.status(404).json({ message: 'Pet not found' });
     } else {
       res.status(200).json({ pets });
     }
-
   } catch (error) {
     logger.error(error);
     return res
@@ -136,7 +134,7 @@ exports.readByGender = async (req, res) => {
     const gender = req.query.gender;
     const Pet = new PetService();
     const pets = await Pet.getByGender(gender);
-    if (pets === null || pets.length == 0)  {
+    if (pets === null || pets.length == 0) {
       res.status(404).json({ message: 'Pet not found' });
     } else {
       res.status(200).json({ pets });
@@ -154,7 +152,7 @@ exports.readByRace = async (req, res) => {
     const race = req.query.race;
     const Pet = new PetService();
     const pets = await Pet.getByRace(race);
-    if (pets === null || pets.length == 0)  {
+    if (pets === null || pets.length == 0) {
       res.status(404).json({ message: 'Pet not found' });
     } else {
       res.status(200).json({ pets });

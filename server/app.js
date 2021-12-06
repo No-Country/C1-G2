@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const PREFIX = '/api/pet_adoption/';
+const PREFIX = '/api/';
 const app = express();
 const cors = require('cors');
 
@@ -44,6 +44,5 @@ getConnection()
     });
   })
   .catch(logger.error);
-
 
 module.exports = app;

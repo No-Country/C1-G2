@@ -16,39 +16,57 @@ export class ContactFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router
-  ) {
-    this.form = this.fb.group({
-      name: new FormControl(null, [
-        Validators.required
-      ]),
-      email: new FormControl(null, [
-        Validators.required
-      ]),
-      asunto: new FormControl(null, [
-        Validators.required
-      ]),
-      mensaje: new FormControl(null, [
-        Validators.required
-      ])
-    });
-  }
+    ) {
+      this.form = new FormGroup({
+        name: new FormControl('', [Validators.required]),
+        date: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.email]),
+        text: new FormControl('', [Validators.maxLength(200)]),
+        category: new FormControl('', [Validators.required]),
+        gender: new FormControl('', [Validators.required]),
+      });
+    }
 
   ngOnInit(): void {
+
   }
 
   public saveForm(): void {
     console.log(this.form);
   }
 
-  send(): void {
-    const { name, email, asunto, mensaje } = this.form.value;
+  saveContact(): void {
+    const { name, password } = this.form.value;
 
-    // // this.authService.mail(username, password).then( (resp) => {
-    // //   if(resp){
-    // //     this.router.navigateByUrl('home');
-    // //   }
-    // // }).catch( ({error}) => {
-    // //   Swal.fire("Error", error.msg, "error");
-    // })
+    this.register(username, email, subject, message).then( (resp) => {
+      if(resp){
+        this.router.navigateByUrl('admin');
+      }
+    }).catch( ({error}) => {
+      Swal.fire("Error", error.msg, "error");
+    })
   }
+
+
+
+
+
+
+
+
 }
+
+
+
+//   send(): void {
+//     const { name, email, asunto, mensaje } = this.form.value;
+
+//     // this.authService.mail(username, password).then( (resp) => {
+//     //   if(resp){
+//     //     this.router.navigateByUrl('home');
+//     //   }
+//     // }).catch( ({error}) => {
+//     //   Swal.fire("Error", error.msg, "error");
+//     })
+//   }
+// }

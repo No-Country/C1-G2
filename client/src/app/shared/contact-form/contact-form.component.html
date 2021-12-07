@@ -4,49 +4,38 @@
       <div class="col-lg-9 align-self-center">
         <div class="row">
           <div class="col-lg-12">
-            <form
-            [formGroup]="form"
-            (ngSubmit)="send()">
-            <div class="col-lg-4">
-              <label for="name">Nombre</label>
-              <input
-                  type="text"
-                  class="form-control"
-                  formControlName="name"
-                  placeholder="your-email@gmail.com"
-                  id="nombre">
-            </div>
-            <div class="col-lg-4">
-              <label for="password">Email</label>
-              <input
-                  type="email"
-                  class="form-control"
-                  formControlName="email"
-                  placeholder="Your Password"
-                  id="email">
-            </div>
-            <div class="col-lg-4">
-              <label for="confirmPassword">Asunto</label>
-              <input
-                  type="asunto"
-                  class="form-control"
-                  formControlName="asunto"
-                  id="asunto">
-            </div>
-            <div class="col-lg-12">
-              <label for="confirmPassword">Mensaje</label>
-              <input
-                  type="mensaje"
-                  class="form-control"
-                  formControlName="mensaje"
-                  id="mensaje">
-            </div>
-            <div class="col-lg-12">
-              <span class="ml-auto"><a href="#" class="forgot-pass">Enviar</a></span>
-            </div>
-            <!-- Save button -->
-            <input type="submit" value="Log In" class="btn btn-block button-save mb-2">
-          </form>
+            <form [formGroup]="form" (ngSubmit)="saveContact()" id="contact" >
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>Dejanos tu mensaje</h2>
+                </div>
+                <div class="col-lg-4">
+                  <fieldset>
+                    <input formControlName="name" type="text" id="name" placeholder="Nombre" required="">
+                  </fieldset>
+                </div>
+                <div class="col-lg-4">
+                  <fieldset>
+                  <input formControlName="email" type="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Email" required="">
+                </fieldset>
+                </div>
+                <div class="col-lg-4">
+                  <fieldset>
+                    <input formControlName="subject" type="text" id="subject" placeholder="Asunto" required="">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <textarea formControlName="message" type="text" class="form-control" id="message" placeholder="Tu mensaje" required=""></textarea>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="button">SEND MESSAGE NOW</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -54,24 +43,28 @@
         <div class="right-info">
           <ul>
             <li>
-              <h6>Número de teléfono</h6>
+              <h6>Phone Number</h6>
               <span>010-020-0340</span>
             </li>
             <li>
-              <h6>Dirección de email</h6>
-              <span>info@animal.app</span>
+              <h6>Email Address</h6>
+              <span>info@meeting.edu</span>
             </li>
             <li>
-              <h6>Dirección</h6>
-              <span>Buenos Aires - RJ, 22795-008, Argentina</span>
+              <h6>Street Address</h6>
+              <span>Rio de Janeiro - RJ, 22795-008, Brazil</span>
             </li>
             <li>
-              <h6>Sitio Web</h6>
-              <span>www.animalapp.com</span>
+              <h6>Website URL</h6>
+              <span>www.meeting.edu</span>
             </li>
           </ul>
         </div>
       </div>
     </div>
+  </div>
+  <div class="footer">
+    <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
+        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
   </div>
 </section>

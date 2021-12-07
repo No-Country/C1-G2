@@ -166,7 +166,26 @@ exports.readByRace = async (req, res) => {
 };
 
 
-exports.delete = async (req, res) => {
+exports.readByCategory = async (req, res) => {
+  try{
+    const category = req.query.category;
+    const Pet = new PetService();
+    const pets = await Pet.getByCategory(category);
+    if(pets === null || pets.length == 0){
+      res.status(404).json({message: 'Pet not found'})
+    }else{
+      res.status(200).json({pets});
+    } 
+  }catch(error){
+    logger.error(error);
+    return res
+      .status(boom.badData(error).output.statusCode)
+      .json( {message: boom.badData(error).output.payload.message} );
+  }
+}
+
+
+exports.deletePet = async (req, res) => {
   const { _id } = await req.body;  
   const idError = validId(_id)
 

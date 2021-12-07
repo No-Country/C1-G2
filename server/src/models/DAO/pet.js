@@ -62,6 +62,16 @@ module.exports = class PetDAO {
     }
   }
 
+  readByCategory(category){
+    try{
+      return pets.find({category: category}, {is_authorized: 0, userid: 0}).exec();
+    }catch(error){
+      logger.error(error);
+      return error;
+    }
+  }
+
+
   deletePet(id) {
     try {
       return pets.findByIdAndDelete({ _id: id });

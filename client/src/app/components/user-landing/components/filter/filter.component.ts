@@ -38,6 +38,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
     fecha: string;
     titulo: string;
     texto: string;
+    userid: number;
   }[] = [
     {
       clase: "all",
@@ -45,6 +46,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:1
     },
     {
       clase: "all soon",
@@ -52,6 +54,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:2
     },
     {
       clase: "all imp",
@@ -59,6 +62,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:3
     },
     {
       clase: "all alt att",
@@ -66,6 +70,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:4
     },
     {
       clase: "all alt att",
@@ -73,6 +78,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:5
     },
     {
       clase: "all alt att",
@@ -80,6 +86,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:6
     },
   ];
 

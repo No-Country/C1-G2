@@ -1,6 +1,6 @@
-<section 
-  class="meetings-page" 
-  id="meetings" 
+<section
+  class="meetings-page"
+  id="meetings"
   *ngIf="cards && buttons">
   <div class="container">
     <div class="row">
@@ -24,22 +24,7 @@
                 class="col-lg-4 templatemo-item-col"
                 [ngClass]="card.clase"
                 *ngFor="let card of cards">
-                <div class="meeting-item">
-                  <div class="thumb">
-                    <a href="meeting-details.html">
-                      <img src="assets/images/meeting-03.jpg" alt=""/>
-                    </a>
-                  </div>
-                  <div class="down-content">
-                    <div class="date">
-                      <h6>{{ card.fecha }}</h6>
-                    </div>
-                    <a href="meeting-details.html">
-                      <h4>{{ card.titulo }}</h4>
-                    </a>
-                    <p>{{ card.texto }}</p>
-                  </div>
-                </div>
+                <app-card [data]="card"></app-card>
               </div>
               <!-- fin -->
             </div>

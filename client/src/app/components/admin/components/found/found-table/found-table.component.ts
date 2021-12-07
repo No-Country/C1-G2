@@ -3,16 +3,14 @@ import { Router } from '@angular/router';
 
 // App Services
 import { HttpBaseService } from 'src/app/services/http-base.service';
-
 @Component({
-  selector: 'app-adoption-table',
-  templateUrl: './adoption-table.component.html',
-  styleUrls: ['./adoption-table.component.css']
+  selector: 'app-found-table',
+  templateUrl: './found-table.component.html',
+  styleUrls: ['./found-table.component.css']
 })
-export class AdoptionTableComponent implements OnInit {
+export class FoundTableComponent implements OnInit {
 
-  public adoptionList: Array<any> = [];
-
+  public foundList: Array<any> = [];
   constructor(
     private _httpService: HttpBaseService,
     private router: Router
@@ -21,8 +19,8 @@ export class AdoptionTableComponent implements OnInit {
   ngOnInit(): void {
     this._httpService.httpGet('pets/list').toPromise()
       .then((resp: any) => {
-        this.adoptionList = resp.pets;
-        console.log(this.adoptionList);
+        this.foundList = resp.pets;
+        console.log(this.foundList);
       })
       .catch((err) => console.log(err));
   }
@@ -40,3 +38,5 @@ export class AdoptionTableComponent implements OnInit {
     this.router.navigate([`admin/adoption-publish/edit/${id}`]);
   }
 }
+
+

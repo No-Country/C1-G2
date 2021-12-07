@@ -17,7 +17,7 @@ export class LostTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._httpService.httpGet('pets/lost').toPromise()
+    this._httpService.httpGet('pets/list').toPromise()
       .then((resp: any) => {
         this.lostList = resp.pets;
         console.log(this.lostList);

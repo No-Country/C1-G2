@@ -28,6 +28,7 @@ import { Approutes } from './app-routing.module';
 // Environment
 import { environment } from 'src/environments/environment';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
+import { LogoutComponent } from './shared/logout/logout.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -42,7 +43,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FullComponent,
     NavigationComponent,
     SidebarComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,

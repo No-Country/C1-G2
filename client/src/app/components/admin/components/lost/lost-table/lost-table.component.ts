@@ -3,14 +3,14 @@ import { Router } from '@angular/router';
 
 // App Services
 import { HttpBaseService } from 'src/app/services/http-base.service';
-@Component({
-  selector: 'app-found-table',
-  templateUrl: './found-table.component.html',
-  styleUrls: ['./found-table.component.css']
-})
-export class FoundTableComponent implements OnInit {
 
-  public foundList: Array<any> = [];
+@Component({
+  selector: 'app-lost',
+  templateUrl: './lost-table.component.html',
+  styleUrls: ['./lost-table.component.css']
+})
+export class LostTableComponent implements OnInit {
+  public lostList: Array<any> = [];
   constructor(
     private _httpService: HttpBaseService,
     private router: Router
@@ -19,8 +19,8 @@ export class FoundTableComponent implements OnInit {
   ngOnInit(): void {
     this._httpService.httpGet('pets/list').toPromise()
       .then((resp: any) => {
-        this.foundList = resp.pets;
-        console.log(this.foundList);
+        this.lostList = resp.pets;
+        console.log(this.lostList);
       })
       .catch((err) => console.log(err));
   }
@@ -38,5 +38,3 @@ export class FoundTableComponent implements OnInit {
     this.router.navigate([`admin/adoption-publish/edit/${id}`]);
   }
 }
-
-

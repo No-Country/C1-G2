@@ -19,11 +19,9 @@ export class ContactFormComponent implements OnInit {
     ) {
       this.form = new FormGroup({
         name: new FormControl('', [Validators.required]),
-        date: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.email]),
-        text: new FormControl('', [Validators.maxLength(200)]),
-        category: new FormControl('', [Validators.required]),
-        gender: new FormControl('', [Validators.required]),
+        subject: new FormControl('', [Validators.maxLength(200)]),
+        message: new FormControl('', [Validators.required]),
       });
     }
 
@@ -36,15 +34,15 @@ export class ContactFormComponent implements OnInit {
   }
 
   saveContact(): void {
-    const { name, password } = this.form.value;
+    const { name, email, subject, message} = this.form.value;
 
-    this.register(username, email, subject, message).then( (resp) => {
-      if(resp){
-        this.router.navigateByUrl('admin');
-      }
-    }).catch( ({error}) => {
-      Swal.fire("Error", error.msg, "error");
-    })
+    // this.register( name, email, subject, message).then( (resp) => {
+    //   if(resp){
+    //     this.router.navigateByUrl('admin');
+    //   }
+    // }).catch( ({error}) => {
+    //   Swal.fire("Error", error.msg, "error");
+    // })
   }
 
 

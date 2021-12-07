@@ -15,6 +15,7 @@ import { AdoptionTableComponent } from "./components/adoption/adoption-table/ado
 import { AdoptionPublishFormComponent } from "./components/adoption/adoption-form/adoption-publish-form.component";
 import { UploadImageModule } from "../../shared/upload-image/upload-image.module";
 import { FoundTableComponent } from './components/found/found-table/found-table.component';
+import { LostTableComponent } from './components/lost/lost-table/lost-table.component'
 
 const APP_ROUTES: Routes = [
   { path: "card", component: CardsComponent },
@@ -23,6 +24,7 @@ const APP_ROUTES: Routes = [
   { path: "adoption-publish", component: AdoptionPublishFormComponent },
   { path: "adoption-publish/edit/:id", component: AdoptionPublishFormComponent },
   { path: "found-table", component: FoundTableComponent },
+  { path: "lost-table", component: LostTableComponent },
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
   { path: "**", redirectTo: "dashboard" },
 ];
@@ -44,6 +46,7 @@ const APP_ROUTES: Routes = [
     DashboardComponent,
     CardsComponent,
     FoundTableComponent,
+    LostTableComponent,
   ],
 })
 export class AdminModule {}

@@ -11,31 +11,38 @@ import { Router } from '@angular/router';
   styleUrls: ["./contact-form.component.css"],
 })
 export class ContactFormComponent implements OnInit {
-  public form: FormGroup;
+  public formContact!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router
-    ) {
-      this.form = this.fb.group({
-        name: new FormControl(null, [Validators.required]),
-        email: new FormControl(null, [Validators.email]),
-        subject: new FormControl(null, [Validators.maxLength(200)]),
-        message: new FormControl(null, [Validators.required]),
-      });
-    }
+    ) {}
 
   ngOnInit(): void {
-
+    this.formContact = this.formBuilder.group({
+      name: [null,[Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(30)
+      ]],
+      email: [null,[Validators.required,
+        Validators.email,
+        Validators.minLength(3),
+        Validators.maxLength(30)
+      ]],
+      subject: [null,[Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(30)
+      ]],
+      message: [null,[Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(30)
+      ]],
+    });
   }
 
-  public saveForm(): void {
-    console.log(this.form);
-  }
-
-  saveContact(): void {
-    const { name, email, subject, message} = this.form.value;
-
+  send(): any {
+    console.log(this.formContact.value);
+    const { name, email, subject, message} = this.formContact.value;
     // this.contactoService.saveContact( name, email, subject, message).then( (resp) => {
     //   if(resp){
     //     this.router.navigateByUrl('admin');
@@ -46,25 +53,6 @@ export class ContactFormComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
 }
 
 
-
-//   send(): void {
-//     const { name, email, asunto, mensaje } = this.form.value;
-
-//     // this.authService.mail(username, password).then( (resp) => {
-//     //   if(resp){
-//     //     this.router.navigateByUrl('home');
-//     //   }
-//     // }).catch( ({error}) => {
-//     //   Swal.fire("Error", error.msg, "error");
-//     })
-//   }
-// }

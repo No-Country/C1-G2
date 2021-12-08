@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HomeComponent } from "./home.component";
 import { RouterModule, Routes } from "@angular/router";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 // App Modules
 import { AccordionModule } from "src/app/shared/accordion/accordion.module";
@@ -18,6 +19,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [HomeComponent],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     ContactFormModule,
     NavbarModule,
     AccordionModule,

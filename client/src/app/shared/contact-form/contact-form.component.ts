@@ -42,20 +42,22 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
-   async sendEmail(){
-
+  sendEmail(): void {
     try {
-      const result: any = await this.formContact.value;
-      console.log(result);
+      console.log(this.formContact);
+
+      const { name, email, subject, message } = this.formContact.value;
+
+      this.contactService.sendEmail(name, email, subject, message);
       Swal.fire("Consulta enviada");
-      this.router.navigate(['home']);
-    }
-    catch (e) {
-      Swal.fire("Error");
-    }
-  }
 
+      this.router.navigateByUrl('home');
 
+        } catch(error) {
+          Swal.fire("Hubo un error");
+        };
+
+    }
 }
 
 

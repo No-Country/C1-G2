@@ -14,8 +14,8 @@ const usersRouter = require('./src/routes/users.routes');
 const authRouter = require('./src/routes/auth.routes');
 const petsRouter = require('./src/routes/pet.routes');
 const ongsRouter = require('./src/routes/ong.routes');
-const { getConnection } = require('./src/models/connection');
 const formRouter = require('./src/routes/form.routes');
+const { getConnection } = require('./src/models/connection');
 
 //middlewares
 app.use(morgan('dev'));

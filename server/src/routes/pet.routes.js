@@ -9,8 +9,9 @@ Router.post('/', [validateJWT], petController.create);
 Router.get('/list', petController.read);
 Router.get('/byid/:id', petController.readById);
 Router.get('/name', petController.readByName);
-Router.get('/gender', petController.readByGender);
+Router.get('/gender' ,petController.readByGender);
 Router.get('/race', petController.readByRace);
+Router.get('/category', petController.readByCategory);
 Router.delete('/delete', [validateJWT], petController.deletePet);
 
 Router.put('/update/:id', [validateJWT], petController.update);

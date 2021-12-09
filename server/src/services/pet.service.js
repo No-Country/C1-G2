@@ -83,6 +83,22 @@ module.exports = class PetService {
     }
   }
 
+  async getByCategory(category){
+    try{
+      const pets = await new PetDAO().readByCategory(category);
+
+      if(pets === undefined){
+        return boom.notFound(pets);
+      }
+      return pets
+
+    }catch(error){
+      logger.error(error);
+      return error;
+    }
+
+  }
+
   async deleteById(id) {
     try {
       const pets = new PetDAO();

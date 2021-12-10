@@ -42,18 +42,19 @@ export class ContactFormComponent implements OnInit {
   }
 
   public sendEmail(): void {
-    console.log(this.formContact);
+
     const { name, email, subject, message } = this.formContact.value;
+    Swal.fire("Consulta enviada");
+    this.formContact.reset();
 
     this._httpService.httpPost('pet_adoption/form', this.formContact.value).toPromise()
-    .then((resp: any) => {
-      this.formContact = resp;
-      console.log(this.formContact);
-    })
-    .catch((err: any) => console.log(err));
+    .then((resp) => {
+
+       console.log(resp);
+
+
+      }).catch((err: any) => console.log(err));
   }
-
-
 }
 
 

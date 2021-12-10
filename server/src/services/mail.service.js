@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const logger = require('../utils/logger');
+
 
 async function main(texto) {
   try {
@@ -23,10 +23,10 @@ async function main(texto) {
 
     return info.messageId;
   } catch (error) {
-    logger.info(error);
+    console.log(error);
   }
 }
 
-main().catch(logger.error);
+main().catch(console.error);
 
 module.exports = { main };

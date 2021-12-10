@@ -3,7 +3,7 @@ const logger = require('../utils/logger');
 
 async function main(texto) {
   try {
-    const transporter = nodemailer.crTransport({
+    const transporter = nodemailer.createTransport({
       host: process.env.CORREO_SERVICE,
       port: process.env.CORREO_PORT,
       secure: false,

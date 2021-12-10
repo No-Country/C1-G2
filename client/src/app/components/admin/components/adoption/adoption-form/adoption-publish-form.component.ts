@@ -70,7 +70,9 @@ export class AdoptionPublishFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getPetDetails();
+    if (_.get(this.route.params, '_value.id')) {
+      this.getPetDetails();
+    }
   }
 
   ngOnDestroy(): void {

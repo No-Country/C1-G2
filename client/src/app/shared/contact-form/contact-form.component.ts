@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import Swal from "sweetalert2";
 import { Router } from '@angular/router';
 import { ContactService } from './../../services/contact.service';
-
+import { HttpBaseService } from 'src/app/services/http-base.service';
 
 
 @Component({
@@ -15,6 +15,7 @@ export class ContactFormComponent implements OnInit {
   public formContact!: FormGroup;
 
   constructor(
+    private _httpService: HttpBaseService,
     private contactService: ContactService,
     private formBuilder: FormBuilder,
     private router: Router
@@ -42,22 +43,34 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
-  sendEmail(): void {
-    try {
+  public sendEmail(): void {
+    console.log(this.formContact);
+    const { name, email, subject, message } = this.formContact.value;
+
+    this._httpService.httpPost('pet_adoption/form', this.formContact.value).toPromise()
+    .then((resp: any) => {
+      this.formContact = resp;
       console.log(this.formContact);
+    })
+    .catch((err: any) => console.log(err));
+  }
 
-      const { name, email, subject, message } = this.formContact.value;
+  // sendEmail(): void {
+  //   try {
+  //     console.log(this.formContact);
 
-      this.contactService.sendEmail(name, email, subject, message);
-      Swal.fire("Consulta enviada");
+  //     const { name, email, subject, message } = this.formContact.value;
 
-      this.router.navigateByUrl('home');
+  //     this.contactService.sendEmail(name, email, subject, message);
+  //     Swal.fire("Consulta enviada");
 
-        } catch(error) {
-          Swal.fire("Hubo un error");
-        };
+  //     this.router.navigateByUrl('home');
 
-    }
+  //       } catch(error) {
+  //         Swal.fire("Hubo un error");
+  //       };
+
+  //   }
 }
 
 

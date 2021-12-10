@@ -170,7 +170,14 @@ exports.readByCategory = async (req, res) => {
   try{
     const category = req.query.category;
     const Pet = new PetService();
-    const pets = await Pet.getByCategory(category);
+    let pets = null;
+
+    if( category == "ALL"){
+      pets = await Pet.getAll();
+    }else{
+      pets = await Pet.getByCategory(category);
+    }
+    
     if(pets === null || pets.length == 0){
       res.status(404).json({message: 'Pet not found'})
     }else{

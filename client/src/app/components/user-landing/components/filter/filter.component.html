@@ -1,34 +1,31 @@
 <section
   class="meetings-page"
   id="meetings"
-  *ngIf="cards && buttons">
+  *ngIf="!isLoading">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="filters">
-              <ul>
-                <li
-                  [attr.data-filter]="button.dataFilter"
-                  *ngFor="let button of buttons; let i = index">
-                  {{ button.titulo }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="row grid">
-              <!-- comienzo tarjeta -->
-              <div
-                class="col-lg-4 templatemo-item-col"
-                [ngClass]="card.clase"
-                *ngFor="let card of cards">
-                <app-card [data]="card"></app-card>
-              </div>
-              <!-- fin -->
-            </div>
-          </div>
+    <div class="filters">
+      <ul>
+        <li 
+          *ngFor="let button of buttons"
+          class="active"
+          (click)="getAllPetsByCategory(button.value)">
+          {{ button.titulo }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-12 row card-filters-container">
+        <div 
+          class="col-lg-4"
+          *ngFor="let card of cards">
+          <app-card *ngIf="!isFilterLoading" [data]="card"></app-card>
+        </div>
+      <div 
+        class="spinner-container"
+        *ngIf="isFilterLoading">
+        <div 
+          class="spinner-border c-white" 
+          role="status">
+          <span class="sr-only">Loading...</span>
         </div>
       </div>
     </div>

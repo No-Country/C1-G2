@@ -14,7 +14,7 @@ Main sidebar
   width: $sidebar-width-full;
   height: 100%;
   top: 0px;
-
+  position: fixed;
   z-index: 10;
   padding-top: 64px;
   background: $sidebar;

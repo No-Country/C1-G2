@@ -23,7 +23,7 @@ async function main(texto) {
 
     return info.messageId;
   } catch (error) {
-    logger.info(error);
+    console.warn(error);
   }
 }
 

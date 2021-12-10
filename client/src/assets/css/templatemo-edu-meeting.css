@@ -1594,6 +1594,7 @@ section.meetings-page .pagination ul li a:hover {
   padding: 40px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  margin-top: -120px;
 }
 
 .meeting-single-item .thumb .date {

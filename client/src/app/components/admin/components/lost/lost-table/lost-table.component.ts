@@ -5,14 +5,12 @@ import { Router } from '@angular/router';
 import { HttpBaseService } from 'src/app/services/http-base.service';
 
 @Component({
-  selector: 'app-adoption-table',
-  templateUrl: './adoption-table.component.html',
-  styleUrls: ['./adoption-table.component.css']
+  selector: 'app-lost',
+  templateUrl: './lost-table.component.html',
+  styleUrls: ['./lost-table.component.css']
 })
-export class AdoptionTableComponent implements OnInit {
-
-  public adoptionList: Array<any> = [];
-
+export class LostTableComponent implements OnInit {
+  public lostList: Array<any> = [];
   constructor(
     private _httpService: HttpBaseService,
     private router: Router
@@ -21,8 +19,8 @@ export class AdoptionTableComponent implements OnInit {
   ngOnInit(): void {
     this._httpService.httpGet('pets/list').toPromise()
       .then((resp: any) => {
-        this.adoptionList = resp.pets;
-        console.log(this.adoptionList);
+        this.lostList = resp.pets;
+        console.log(this.lostList);
       })
       .catch((err) => console.log(err));
   }

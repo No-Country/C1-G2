@@ -28,7 +28,20 @@
                 (click)="onNavigateToDashboard()">
                 Ir Panel</a>
               </li> 
-            <li class="scroll-to-section"><a class="cursor-pointer" (click)="onNavigateToSignIn()">Iniciar sesión</a></li> 
+            <li class="scroll-to-section">
+              <a class="cursor-pointer"  
+                  *ngIf="!loggedIn; else panelAdmin"  
+                  (click)="onNavigateToSignIn()" 
+              >
+                Iniciar sesión
+              </a>
+              <ng-template #panelAdmin>
+                <a class="cursor-pointer" (click)="onNavigateToDashboard()">
+                  Panel de control
+                </a>
+              </ng-template>
+              
+            </li> 
           </ul>        
           <a class='menu-trigger'>
             <span>Menu</span>

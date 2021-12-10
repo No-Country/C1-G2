@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Card } from '../../interfaces/card.interface';
 
 declare function customInitFilter(): undefined;
 
@@ -32,19 +33,14 @@ export class FilterComponent implements AfterViewInit, OnChanges {
     },
   ];
 
-  cards: {
-    clase: string;
-    img: string;
-    fecha: string;
-    titulo: string;
-    texto: string;
-  }[] = [
+  cards: Card[] = [
     {
       clase: "all",
       img: "assets/images/meeting-01.jpg",
       fecha: "Nov 12",
-      titulo: "New Lecturers Meeting",
+      titulo: "Titulo de prueba",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:1
     },
     {
       clase: "all soon",
@@ -52,6 +48,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:2
     },
     {
       clase: "all imp",
@@ -59,6 +56,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:3
     },
     {
       clase: "all alt att",
@@ -66,6 +64,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:4
     },
     {
       clase: "all alt att",
@@ -73,6 +72,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:5
     },
     {
       clase: "all alt att",
@@ -80,6 +80,7 @@ export class FilterComponent implements AfterViewInit, OnChanges {
       fecha: "Nov 12",
       titulo: "New Lecturers Meeting",
       texto: "Morbi in libero blandit lectus cursus ullamcorper.",
+      userid:6
     },
   ];
 

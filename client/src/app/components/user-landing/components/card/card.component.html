@@ -1,12 +1,14 @@
-<div class="meeting-item">
+<a [routerLink]="['/home/pet-details/61aa882ee374241c857b5b19']"> <div class="meeting-item">
   <div class="thumb">
-    <a href="meeting-details.html"><img src="assets/images/meeting-01.jpg" alt=""></a>
+    <a><img src="assets/images/meeting-01.jpg" alt=""></a>
   </div>
   <div class="down-content">
     <div class="date">
       <h6>{{ data.fecha }}</h6>
     </div>
-    <a href="meeting-details.html"><h4>{{ data.titulo }}</h4></a>
+    <a>
+      <h4>{{ data.titulo }}</h4>
+    </a>
     <p>{{ data.texto }}</p>
   </div>
-</div>
+</div></a>

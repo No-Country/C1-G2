@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+html, body, app-card-detail, section {
+    height: 100%;
+}
+
 .full-height {
     height   : 100% !important;
     font-size: 40px !important;

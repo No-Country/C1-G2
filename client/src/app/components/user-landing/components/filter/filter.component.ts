@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { HttpBaseService } from "src/app/services/http-base.service";
 import { Card } from '../../interfaces/card.interface';
 
 declare function customInitFilter(): undefined;
@@ -8,7 +9,7 @@ declare function customInitFilter(): undefined;
   templateUrl: "./filter.component.html",
   styleUrls: ["./filter.component.css"],
 })
-export class FilterComponent implements AfterViewInit, OnChanges {
+export class FilterComponent implements OnChanges {
 
   @Input() isLoading: boolean = true;
 
@@ -84,16 +85,22 @@ export class FilterComponent implements AfterViewInit, OnChanges {
     },
   ];
 
-  constructor() {
+  constructor(private _httpService: HttpBaseService) {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!changes.isLoading.currentValue) {
       customInitFilter();
+      this.getAllPetsByCategory();
     }
   }
 
-  ngAfterViewInit(): void {
-    customInitFilter();
+  getAllPetsByCategory(): void {
+    const url = 'pets/category?category=ADOPTION';
+
+    this._httpService.httpGet(url).toPromise().then((resp) => {
+      console.log(resp);
+    });
   }
 }

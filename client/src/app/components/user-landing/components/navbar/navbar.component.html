@@ -20,15 +20,21 @@
               </ul>
             </li>
             <li class="scroll-to-section"><a href="home#courses">Contacto</a></li> 
-            <li   
-              *ngIf="auth"
-              class="scroll-to-section">
-              <a 
-                class="cursor-pointer"  
-                (click)="onNavigateToDashboard()">
-                Ir Panel</a>
-              </li> 
-            <li class="scroll-to-section"><a class="cursor-pointer" (click)="onNavigateToSignIn()">Iniciar sesión</a></li> 
+            
+            <li class="scroll-to-section">
+              <a class="cursor-pointer"  
+                  *ngIf="!loggedIn; else panelAdmin"  
+                  (click)="onNavigateToSignIn()" 
+              >
+                Iniciar sesión
+              </a>
+              <ng-template #panelAdmin>
+                <a class="cursor-pointer" (click)="onNavigateToDashboard()">
+                  Ir panel
+                </a>
+              </ng-template>
+              
+            </li> 
           </ul>        
           <a class='menu-trigger'>
             <span>Menu</span>

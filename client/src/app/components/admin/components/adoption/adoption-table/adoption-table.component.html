@@ -17,14 +17,22 @@
       <td>{{ case.category }}</td>
       <td>{{ case.is_authorized }}</td>
       <td>
-        <i 
-          class="fas fa-edit text-primary mr-2" 
-          (click)="onEditPet(case._id)">
-        </i>
-        <i 
-          class="fas fa-trash text-danger"
-          (click)="onDeletePet(case._id)">
-        </i>
+        <div *ngIf="!isActionsButtonsLoading">
+          <i 
+            class="fas fa-edit text-primary mr-2" 
+            (click)="onEditPet(case._id)">
+          </i>
+          <i 
+            class="fas fa-trash text-danger"
+            (click)="onDeletePet(case._id)">
+          </i>
+        </div>
+        <div 
+          *ngIf="isActionsButtonsLoading"
+          class="spinner-border" 
+          role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
       </td>
     </tr>
   </tbody>

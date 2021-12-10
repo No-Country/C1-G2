@@ -14,6 +14,7 @@ const usersRouter = require('./src/routes/users.routes');
 const authRouter = require('./src/routes/auth.routes');
 const petsRouter = require('./src/routes/pet.routes');
 const ongsRouter = require('./src/routes/ong.routes');
+const formRouter = require('./src/routes/form.routes');
 const { getConnection } = require('./src/models/connection');
 
 //middlewares
@@ -25,7 +26,7 @@ app.use(cors(corsOptions));
 app.use(express.static('public/dist'));
 
 //routes
-
+app.use(`${PREFIX}form`, formRouter);
 app.use(`${PREFIX}pets`, petsRouter);
 app.use(`${PREFIX}users`, usersRouter);
 app.use(`${PREFIX}auth`, authRouter);

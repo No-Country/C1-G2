@@ -48,5 +48,37 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     extralink: false,
     submenu: [],
+  },
+  {
+    path: "",
+    title: "Encontradas",
+    icon: "mdi mdi-dots-horizontal",
+    class: "nav-small-cap",
+    extralink: true,
+    submenu: [],
+  },
+  {
+    path: "/admin/found-table",
+    title: "Lista",
+    icon: "mdi mdi-gauge",
+    class: "",
+    extralink: false,
+    submenu: [],
+  },
+  {
+    path: "",
+    title: "Perdidas",
+    icon: "mdi mdi-dots-horizontal",
+    class: "nav-small-cap",
+    extralink: true,
+    submenu: [],
+  },
+  {
+    path: "/admin/lost-table",
+    title: "Lista",
+    icon: "mdi mdi-gauge",
+    class: "",
+    extralink: false,
+    submenu: [],
   }
 ];

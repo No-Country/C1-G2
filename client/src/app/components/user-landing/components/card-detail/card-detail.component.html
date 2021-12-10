@@ -1,0 +1,54 @@
+<section class="meetings-page" id="meetings">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="meeting-single-item">
+              <div class="thumb">
+                {{ card.img }}
+              </div>
+              <div class="down-content">
+                <h1> Nombre</h1>
+                <p> {{ card.petname }} </p>
+                <br>
+                <h3> Raza </h3>
+                <p> {{ card.race }}</p>
+                <br>
+                <h3>Descripción</h3>
+                <p class="description">
+                  {{ card.description }}
+                </p>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="hours">
+                      <h5> Fecha </h5>
+                      <p> {{ card.publicationDate }} </p>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="location">
+                      <h5>Direccion</h5>
+                      <p> {{card.direction}} </p>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="book now">
+                      <h5>Teléfono</h5>
+                      <p>010-020-0340<br>090-080-0760</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="main-button-red">
+              <a routerLink="/home">Volver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

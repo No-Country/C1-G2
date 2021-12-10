@@ -15,7 +15,8 @@ import { CardComponent } from "../card/card.component";
 import { CardDetailComponent } from "../card-detail/card-detail.component";
  
 const routes: Routes = [
-  { path: "", component: HomeComponent }
+  { path: 'pet-details/:id', component: CardDetailComponent },
+  { path: '', component: HomeComponent }
 ];
 
 @NgModule({

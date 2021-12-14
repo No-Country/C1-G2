@@ -8,9 +8,12 @@ import { Card } from '../../interfaces/card.interface';
 })
 export class CardComponent implements OnInit {
 
-  @Input() data!: Card;
+  // TODO: modificar modelo card al schema actual y usar en data
+  @Input() data!: any;
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.data);
+  }
 }

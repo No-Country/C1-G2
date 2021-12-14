@@ -1,0 +1,13 @@
+.c-white {
+    color: whitesmoke;
+}
+
+.card-filters-container {
+    min-height: 240px;
+}
+
+.spinner-container {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}

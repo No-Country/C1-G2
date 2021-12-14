@@ -16,9 +16,11 @@
 ```
 1. Download repository.
 2. Run command npm install on project root.
-3. Run command docker-compose up (or up -d for detached).
-4. make request on 5000.
-5.
+3. Run command docker-compose up (or up -d for detached). this works for run mongo service when NODE_ENV=development
+4. make request on PORT that you choose.
+5. cd client and run npm install
+6. run ng serve
+7. make a request on PORT 4200
 ```
 
 - Install dependencies
@@ -27,7 +29,7 @@
   npm install
   ```
 
-- Run locally
+- Run server locally
 
   ```
   npm run dev

@@ -67,7 +67,7 @@ html[xmlns] .clearfix {
 
 ul, li {
   padding: 0;
-  margin: 0;
+  margin: 10px;
   list-style: none;
 }
 
@@ -887,7 +887,7 @@ upcoming meetings
 */
 
 section.upcoming-meetings {
-  background-image: url(../images/meetings-bg.jpg);
+  background-image: url(../images/background-pet.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1022,7 +1022,7 @@ apply now
 */
 
 section.apply-now {
-  background-image: url(../images/apply-bg.jpg);
+  background-image: url(../images/apply-bg.jfif);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1106,7 +1106,7 @@ courses
 */
 
 section.our-courses {
-  background-image: url(../images/meetings-bg.jpg);
+  background-image: url(../images/background-pet.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1304,7 +1304,7 @@ section.our-facts h2 {
 section.our-facts .video {
   text-align: center;
   margin-left: 70px;
-  background-image: url(../images/video-item-bg.jpg);
+  background-image: url(../images/video-item-bg.jfif);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1324,7 +1324,7 @@ contact us
 */
 
 section.contact-us {
-  background-image: url(../images/meetings-bg.jpg);
+  background-image: url(../images/background-pet.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1490,7 +1490,7 @@ upcoming meetings page
 */
 
 section.meetings-page {
-  background-image: url(../images/meetings-page-bg.jpg);
+  background-image: url(../images/background-pet.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1594,7 +1594,6 @@ section.meetings-page .pagination ul li a:hover {
   padding: 40px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  margin-top: -120px;
 }
 
 .meeting-single-item .thumb .date {

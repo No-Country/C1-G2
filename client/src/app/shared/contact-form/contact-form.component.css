@@ -1,0 +1,10 @@
+.logo-footer {
+    width: 150px;
+}
+
+.text-div {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    color          : whitesmoke;
+}

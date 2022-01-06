@@ -4,6 +4,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "",
     title: "Personal",
+    subtitle: 'Personal',
     icon: "mdi mdi-dots-horizontal",
     class: "nav-small-cap",
     extralink: true,
@@ -14,6 +15,7 @@ export const ROUTES: RouteInfo[] = [
     title: "Dashboard",
     icon: "mdi mdi-gauge",
     class: "",
+    subtitle: 'Dashboard',
     extralink: false,
     submenu: [],
   },
@@ -21,6 +23,7 @@ export const ROUTES: RouteInfo[] = [
     path: "/admin/card",
     title: "Card",
     icon: "mdi mdi-gauge",
+    subtitle: 'Card',
     class: "",
     extralink: false,
     submenu: [],
@@ -28,6 +31,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "",
     title: "Adopciones",
+    subtitle: 'Adopciones',
     icon: "mdi mdi-dots-horizontal",
     class: "nav-small-cap",
     extralink: true,
@@ -36,6 +40,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/admin/adoption-table",
     title: "Lista",
+    subtitle: "lista adopcion",
     icon: "mdi mdi-gauge",
     class: "",
     extralink: false,
@@ -44,6 +49,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/admin/adoption-publish",
     title: "Publicar",
+    subtitle: "Publicar",
     icon: "mdi mdi-gauge",
     class: "",
     extralink: false,
@@ -54,12 +60,14 @@ export const ROUTES: RouteInfo[] = [
     title: "Encontradas",
     icon: "mdi mdi-dots-horizontal",
     class: "nav-small-cap",
+    subtitle: "Encontradas",
     extralink: true,
     submenu: [],
   },
   {
     path: "/admin/found-table",
     title: "Lista",
+    subtitle: "lista encontrados",
     icon: "mdi mdi-gauge",
     class: "",
     extralink: false,
@@ -68,6 +76,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "",
     title: "Perdidas",
+    subtitle: "Perdidas",
     icon: "mdi mdi-dots-horizontal",
     class: "nav-small-cap",
     extralink: true,
@@ -76,6 +85,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/admin/lost-table",
     title: "Lista",
+    subtitle: "lista perdidos",
     icon: "mdi mdi-gauge",
     class: "",
     extralink: false,

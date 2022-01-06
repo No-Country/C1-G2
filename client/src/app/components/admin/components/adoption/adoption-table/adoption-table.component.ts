@@ -20,7 +20,7 @@ export class AdoptionTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._httpService.httpGet('pets/list').toPromise()
+    this._httpService.httpGet('pets/category?category=ADOPTION').toPromise()
       .then((resp: any) => {
         this.adoptionList = resp.pets;
         console.log(this.adoptionList);

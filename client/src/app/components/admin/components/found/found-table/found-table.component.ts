@@ -17,7 +17,7 @@ export class FoundTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._httpService.httpGet('pets/list').toPromise()
+    this._httpService.httpGet('pets/category?category=FOUND').toPromise()
       .then((resp: any) => {
         this.foundList = resp.pets;
         console.log(this.foundList);
